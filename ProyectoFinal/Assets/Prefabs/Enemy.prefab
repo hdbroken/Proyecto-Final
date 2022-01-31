@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8642694922279349465}
   - component: {fileID: 8642694922279349464}
   - component: {fileID: 8642694922279349467}
-  - component: {fileID: 5506533988399264427}
+  - component: {fileID: 8715003563039539954}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8642694922279349466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypointList: {fileID: 0}
---- !u!195 &5506533988399264427
+--- !u!195 &8715003563039539954
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
