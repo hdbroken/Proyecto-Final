@@ -74,7 +74,7 @@ public class PlayerBorrar : MonoBehaviour
         {
             Debug.Log("piw piu");
             laser.SetPosition(0, transform.position);
-            laser.SetPosition(0, transform.forward);
+            laser.SetPosition(1, transform.position);
 
         }
     }
