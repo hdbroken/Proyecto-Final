@@ -17,17 +17,19 @@ public class PlayerBorrar : MonoBehaviour
     [SerializeField] float SpeedCameraY = 1f;
     //Laser
     private LineRenderer laser;
+    private Shoot fire;
 
     void Start()
     {
         StartPos();
         laser = GetComponent<LineRenderer>();
+        fire = GetComponent<Shoot>();
     }
     void Update()
     {
         Move();
         Rotate();
-        Shoot();
+        //fire.Shooting();
     }
     void StartPos()
     {
@@ -50,31 +52,5 @@ public class PlayerBorrar : MonoBehaviour
         Quaternion angulo = Quaternion.Euler(cameraX *speedCameraX, cameraY *SpeedCameraY, 0f);
         transform.localRotation = angulo;
     }
-    void Shoot()
-    {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
-        {
-            Debug.Log("piw piu");
-            laser.SetPosition(0, transform.position);
-            laser.SetPosition(1, transform.forward * 1000);
-            
-            /*RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward * 1000, out hit))
-            {
-                if (hit.collider)
-                {
-                    laser.SetPosition(1, hit.point);
-                }             
-            }
-            else
-            {
-                laser.SetPosition(1, transform.position * 1000);
-            }*/
-        }
-        else
-        {
-            laser.SetPosition(0, transform.position);
-            laser.SetPosition(1, transform.position);
-        }
-    }
+
 }
