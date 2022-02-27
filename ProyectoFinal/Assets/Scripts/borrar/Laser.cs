@@ -13,17 +13,17 @@ public class Laser : MonoBehaviour
     {
         laser.SetPosition(0, transform.position);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit)) 
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-        if (hit.collider == null) 
+            if (hit.collider)
             {
-            laser.SetPosition(1,hit.point);
+                laser.SetPosition(1, hit.point);
             }
         }
-        else 
+        else
         {
             laser.SetPosition(1, transform.forward * 5000);
         }
-        
+    
     }
 }

@@ -55,24 +55,22 @@ public class PlayerBorrar : MonoBehaviour
             Debug.Log("piw piu");
             laser.SetPosition(0, transform.position);
             laser.SetPosition(1, transform.forward * 1000);
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, transform.forward*1000, out hit))
+            
+            /*RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward * 1000, out hit))
             {
-                if (hit.collider == null)
+                if (hit.collider)
                 {
                     laser.SetPosition(1, hit.point);
-                }
+                }             
             }
             else
             {
-                laser.SetPosition(1, transform.forward * 1000);
-            }
-
+                laser.SetPosition(1, transform.position * 1000);
+            }*/
         }
         else
         {
-            Debug.Log("piw piu");
             laser.SetPosition(0, transform.position);
             laser.SetPosition(1, transform.position);
 
