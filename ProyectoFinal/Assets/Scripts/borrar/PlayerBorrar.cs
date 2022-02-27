@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBorrar : MonoBehaviour
-{
+{    
+    //posicion inicial
     [SerializeField] Vector3 StartingRotation = new Vector3(0f, 180f, 0f);
     [SerializeField] Vector3 StartingPosition = new Vector3(0f, 0f, 0f);
+    //Movimiento   
     [SerializeField] float PlayerSpeed = 5f;
-    //[SerializeField] float sensibility = 1f;
-    private LineRenderer laser;
+    private Vector3 direccion;
+    //Camara
     private float cameraX;
     private float cameraY;
-    private Vector3 direccion;
+    [SerializeField] float speedCameraX = 1f;
+    [SerializeField] float SpeedCameraY = 1f;
+    //Laser
+    private LineRenderer laser;
 
     void Start()
     {
@@ -24,7 +29,6 @@ public class PlayerBorrar : MonoBehaviour
         Rotate();
         Shoot();
     }
-
     void StartPos()
     {
         transform.Rotate(StartingRotation);
@@ -37,17 +41,15 @@ public class PlayerBorrar : MonoBehaviour
         if (Input.GetKey("a")) { direccion = Vector3.left; };
         if (Input.GetKey("s")) { direccion = Vector3.back; };
         if (Input.GetKey("d")) { direccion = Vector3.right; };
-
         transform.Translate(direccion * PlayerSpeed * Time.deltaTime);
     }
     void Rotate()
     {
         cameraY += Input.GetAxis("Mouse X");
         cameraX += (Input.GetAxis("Mouse Y") * -1);
-        Quaternion angulo = Quaternion.Euler(cameraX, cameraY, 0f);
+        Quaternion angulo = Quaternion.Euler(cameraX *speedCameraX, cameraY *SpeedCameraY, 0f);
         transform.localRotation = angulo;
     }
-
     void Shoot()
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
@@ -73,7 +75,6 @@ public class PlayerBorrar : MonoBehaviour
         {
             laser.SetPosition(0, transform.position);
             laser.SetPosition(1, transform.position);
-
         }
     }
 }
