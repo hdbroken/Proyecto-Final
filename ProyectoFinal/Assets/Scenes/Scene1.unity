@@ -5516,6 +5516,8 @@ MonoBehaviour:
   StartingRotation: {x: 0, y: 180, z: 0}
   StartingPosition: {x: 0, y: 5, z: -13}
   PlayerSpeed: 5
+  speedCameraX: 1.2
+  SpeedCameraY: 1.2
 --- !u!120 &1346470806
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6349,7 +6351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498512010}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.561329, y: -1.804, z: -31.738403}
+  m_LocalPosition: {x: 31.561329, y: -1.804, z: -31.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1572178067}
