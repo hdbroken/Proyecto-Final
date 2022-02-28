@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
         {
-            laser.SetPosition(0, player.transform.position);
+            laser.SetPosition(0, (player.transform.position + new Vector3(0,-1,0.1f)));
             laser.SetPosition(1, player.transform.forward * 1000);
 
             RaycastHit hit;
@@ -26,10 +26,6 @@ public class Shoot : MonoBehaviour
                 {
                     laser.SetPosition(1, hit.point);
                 }
-            }
-            else
-            {
-                laser.SetPosition(1, player.transform.position * 1000);
             }
         }
         else
