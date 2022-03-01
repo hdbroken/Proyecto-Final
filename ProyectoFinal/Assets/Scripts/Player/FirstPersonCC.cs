@@ -21,7 +21,7 @@ public class FirstPersonCC : MonoBehaviour
     [SerializeField]
     private float _limitHeadUp = 60 ;
     [SerializeField]
-    private float _limitHeadDown = -60;
+    private float _limitHeadDown = 60;
 
     private float _hMouse;
     private float _vMouse;
@@ -29,13 +29,16 @@ public class FirstPersonCC : MonoBehaviour
     private Camera _headCamera;
 
     private Shoot _fire;
-    
+    private Animator _playerAnimator;
+
 
     void Awake()
     {
+        _playerAnimator = GetComponentInChildren<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
         _fire = GetComponent<Shoot>();
+        _limitHeadDown *= -1;
     }
 
     // Update is called once per frame
@@ -100,6 +103,23 @@ public class FirstPersonCC : MonoBehaviour
         float hKeyboardAxis = Input.GetAxisRaw("Horizontal");
         float vkeyboardAxis = Input.GetAxisRaw("Vertical");
         Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);
+
+        if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (!Run()))
+        {
+            _playerAnimator.SetBool("isWalk", true);
+            _playerAnimator.SetBool("isRun", false);
+        }
+        else if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (Run()))
+        {
+            _playerAnimator.SetBool("isWalk", false);
+            _playerAnimator.SetBool("isRun", true);
+        }
+        else if (hKeyboardAxis == 0 || vkeyboardAxis == 0)
+        {
+            _playerAnimator.SetBool("isWalk", false);
+            _playerAnimator.SetBool("isRun", false);
+        }
+
         return directionToMove;            
     }
 
