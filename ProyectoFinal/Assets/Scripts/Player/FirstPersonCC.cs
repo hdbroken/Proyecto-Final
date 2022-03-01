@@ -46,7 +46,7 @@ public class FirstPersonCC : MonoBehaviour
     {
         TouchTheFloor();
         Movement();
-        _fire.Shooting(_headCamera);
+        //_fire.Shooting(_headCamera);
     }
 
     private void Movement()
