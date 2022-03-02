@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd5e35b7d90d294cb1a7ec0455127a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gizmoColor: {r: 0.09476948, g: 0, b: 1, a: 0.19215687}
+  _gizmoColor: {r: 0.09476948, g: 0, b: 1, a: 0.6039216}
   _radio: 0.3
