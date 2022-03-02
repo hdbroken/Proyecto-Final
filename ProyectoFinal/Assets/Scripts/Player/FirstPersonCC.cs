@@ -88,7 +88,7 @@ public class FirstPersonCC : MonoBehaviour
 
     private void MoveFeet()
     {
-        if (Run())
+        if (IsRun())
         {
             Move(DirectionToMove(),_runSpeed);
         }
@@ -104,26 +104,12 @@ public class FirstPersonCC : MonoBehaviour
         float vkeyboardAxis = Input.GetAxisRaw("Vertical");
         Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);
 
-        if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (!Run()))
-        {
-            _playerAnimator.SetBool("isWalk", true);
-            _playerAnimator.SetBool("isRun", false);
-        }
-        else if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (Run()))
-        {
-            _playerAnimator.SetBool("isWalk", false);
-            _playerAnimator.SetBool("isRun", true);
-        }
-        else if (hKeyboardAxis == 0 || vkeyboardAxis == 0)
-        {
-            _playerAnimator.SetBool("isWalk", false);
-            _playerAnimator.SetBool("isRun", false);
-        }
+        Animation(hKeyboardAxis, vkeyboardAxis, IsRun());
 
         return directionToMove;            
     }
 
-    private bool Run() 
+    private bool IsRun() 
     {
         if (Input.GetKey(KeyCode.LeftShift)) return true;
         else return false;
@@ -137,5 +123,105 @@ public class FirstPersonCC : MonoBehaviour
     private void TouchTheFloor()
     {
        _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _gravity * Time.deltaTime);
+    }
+
+    private void Animation(float hKeyboardAxis, float vkeyboardAxis, bool isRun)
+    {
+        // IDLE
+        if (hKeyboardAxis == 0 && vkeyboardAxis == 0)
+        {
+            _playerAnimator.SetBool("isWalk", false);
+            _playerAnimator.SetBool("isRun", false);
+            _playerAnimator.SetBool("isLeftStrafe", false);
+            _playerAnimator.SetBool("isRightStrafe", false);
+            _playerAnimator.SetBool("isWalkingBack", false);
+        }
+        if (!isRun)
+        {
+            _playerAnimator.SetBool("isRun", false);
+            _playerAnimator.SetBool("isRunBack", false);
+            _playerAnimator.SetBool("isRightStrafeRun", false);
+            _playerAnimator.SetBool("isLeftStrafeRun", false);
+            //WALK
+            if (hKeyboardAxis == 0)
+            {
+                _playerAnimator.SetBool("isLeftStrafe", false);
+                _playerAnimator.SetBool("isRightStrafe", false);
+                //WALKING FORDWARD
+                if (vkeyboardAxis > 0)
+                {
+                    _playerAnimator.SetBool("isWalk", true);
+                    _playerAnimator.SetBool("isWalkingBack", false);
+                }
+                //WALKING BACK
+                if (vkeyboardAxis < 0)
+                {
+                    _playerAnimator.SetBool("isWalk", false);
+                    _playerAnimator.SetBool("isWalkingBack", true);
+                }
+            }
+            //STRAFE
+            if (vkeyboardAxis == 0)
+            {
+                _playerAnimator.SetBool("isWalk", false);
+                _playerAnimator.SetBool("isWalkingBack", false);
+                //LEFT STRAFE
+                if (hKeyboardAxis < 0)
+                {
+                    _playerAnimator.SetBool("isLeftStrafe", true);
+                    _playerAnimator.SetBool("isRightStrafe", false);
+                }
+                //RIGHT STRAFE
+                if (hKeyboardAxis > 0)
+                {
+                    _playerAnimator.SetBool("isLeftStrafe", false);
+                    _playerAnimator.SetBool("isRightStrafe", true);
+                }
+            }
+            
+        }
+        /*if (isRun)
+        {
+            _playerAnimator.SetBool("isRun", true);
+            _playerAnimator.SetBool("isWalk", true);
+            //Run
+            if (hKeyboardAxis == 0)
+            {
+                _playerAnimator.SetBool("isLeftStrafeRun", false);
+                _playerAnimator.SetBool("isRightStrafeRun", false);
+                //Running forward
+                if (vkeyboardAxis > 0)
+                {
+                    _playerAnimator.SetBool("isWalk", true);
+                    _playerAnimator.SetBool("isWalkingBack", false);
+                }
+                //Running back
+                if (vkeyboardAxis < 0)
+                {
+                    _playerAnimator.SetBool("isWalk", false);
+                    _playerAnimator.SetBool("isWalkingBack", true);
+                }
+            }
+            //Strafe Run
+            if (vkeyboardAxis == 0)
+            {
+                _playerAnimator.SetBool("isWalk", false);
+                _playerAnimator.SetBool("isWalkingBack", false);
+                //LEFT STRAFE
+                if (hKeyboardAxis < 0)
+                {
+                    _playerAnimator.SetBool("isLeftStrafe", true);
+                    _playerAnimator.SetBool("isRightStrafe", false);
+                }
+                //RIGHT STRAFE
+                if (hKeyboardAxis > 0)
+                {
+                    _playerAnimator.SetBool("isLeftStrafe", false);
+                    _playerAnimator.SetBool("isRightStrafe", true);
+                }
+            }
+
+        }*/
+
     }
 }
