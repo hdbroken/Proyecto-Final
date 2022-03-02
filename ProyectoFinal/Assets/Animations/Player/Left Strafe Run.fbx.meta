@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0a03dbe1463016e40ae076b794853840
+guid: b604368044660764c8abd5039e45235b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Pistol Walk
+    second: Left Strafe Run
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Pistol Walk
+      name: Left Strafe Run
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

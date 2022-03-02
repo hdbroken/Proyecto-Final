@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0a03dbe1463016e40ae076b794853840
+guid: 3cff16bb17b3bf54f8b5bc9dd68aaf78
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Pistol Walk
+    second: Run Back
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Pistol Walk
+      name: Run Back
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
