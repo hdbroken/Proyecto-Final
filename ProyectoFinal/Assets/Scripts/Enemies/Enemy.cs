@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         if (!_player.IsInLOS())
         {
             _navigation.isStopped = false;
-            _enemyAnimator.SetBool("isWalk", true);
+            if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", true);
             if (_index < _waypointList.waypoint.Count)
             {
                 if (_navigation.remainingDistance <= 0)
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         else if (_player.IsInLOS())
         {
             _navigation.isStopped = true;
-            _enemyAnimator.SetBool("isWalk", false);
+            if(_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
             LookPlayer();
         }
     }

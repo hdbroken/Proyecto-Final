@@ -88,7 +88,7 @@ public class FirstPersonCC : MonoBehaviour
 
     private void MoveFeet()
     {
-        if (Run())
+        if (IsRun())
         {
             Move(DirectionToMove(),_runSpeed);
         }
@@ -102,28 +102,12 @@ public class FirstPersonCC : MonoBehaviour
     {
         float hKeyboardAxis = Input.GetAxisRaw("Horizontal");
         float vkeyboardAxis = Input.GetAxisRaw("Vertical");
-        Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);
-
-        if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (!Run()))
-        {
-            _playerAnimator.SetBool("isWalk", true);
-            _playerAnimator.SetBool("isRun", false);
-        }
-        else if ((hKeyboardAxis != 0 || vkeyboardAxis != 0) && (Run()))
-        {
-            _playerAnimator.SetBool("isWalk", false);
-            _playerAnimator.SetBool("isRun", true);
-        }
-        else if (hKeyboardAxis == 0 || vkeyboardAxis == 0)
-        {
-            _playerAnimator.SetBool("isWalk", false);
-            _playerAnimator.SetBool("isRun", false);
-        }
+        Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);   
 
         return directionToMove;            
     }
 
-    private bool Run() 
+    private bool IsRun() 
     {
         if (Input.GetKey(KeyCode.LeftShift)) return true;
         else return false;
