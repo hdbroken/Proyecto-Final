@@ -37,6 +37,7 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
+
         Debug.Log("Estas Muerto");
     }
 }
