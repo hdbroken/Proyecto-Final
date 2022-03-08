@@ -7,9 +7,11 @@ public class FieldOfView : MonoBehaviour
 {
     
     [SerializeField]
+    private float _viewDistance;
     private float _viewDistance = 7;
 
     [SerializeField]
+    private float _viewAngle;
     private float _viewAngle = 45;
 
     [SerializeField]
