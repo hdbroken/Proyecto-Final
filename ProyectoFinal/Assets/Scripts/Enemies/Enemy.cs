@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,7 +76,16 @@ public class Enemy : MonoBehaviour
             _navigation.isStopped = true;
             if(_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
             LookPlayer();
+            if (_player.IsInShootingRange())
+            {
+                ShootPlayer();
+            }
         }
+    }
+
+    private void ShootPlayer()
+    {
+        Debug.Log("Estas Muerto");
     }
 
     private void Move()

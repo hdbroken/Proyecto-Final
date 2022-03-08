@@ -7,10 +7,13 @@ public class FieldOfView : MonoBehaviour
 {
     
     [SerializeField]
-    private float _viewDistance;
+    private float _viewDistance = 7;
 
     [SerializeField]
-    private float _viewAngle;
+    private float _viewAngle = 45;
+
+    [SerializeField]
+    private float _shootDistance = 5;
 
     private GameObject _player;
 
@@ -23,6 +26,9 @@ public class FieldOfView : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _viewDistance);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _shootDistance);
 
         Vector3 fovLine1 = Quaternion.AngleAxis(_viewAngle, transform.up) * transform.forward * _viewDistance;
         Vector3 fovLine2 = Quaternion.AngleAxis(-_viewAngle, transform.up) * transform.forward * _viewDistance;
@@ -40,7 +46,16 @@ public class FieldOfView : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.forward * _viewDistance);
     }
-        
+    
+    public bool IsInShootingRange()
+    {
+        float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+        if (IsInLOS() && (distanceToPlayer <= _shootDistance))
+        {
+            return true;
+        }
+        else return false;
+    }
     public bool IsInLOS()
     {
         Vector3 playerPosition = new Vector3();

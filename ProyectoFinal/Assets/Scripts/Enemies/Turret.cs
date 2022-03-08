@@ -24,6 +24,7 @@ public class Turret : MonoBehaviour
         if(_turret.IsInLOS())
         {
             LookPlayer();
+            if (_turret.IsInShootingRange())
             Shoot();
         }
     }
@@ -36,6 +37,6 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-
+        Debug.Log("Estas Muerto");
     }
 }
