@@ -14,7 +14,7 @@ public class PatrolBehavior : MonoBehaviour
         Patrol();
         checkTurn();
         timer =timer+ Time.deltaTime;
-        Debug.Log("hola" + timer);
+        Debug.Log("tiempo" + timer);
     }
 
     void Patrol()

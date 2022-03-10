@@ -20,7 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
         bool IsLStrafe = Input.GetKey(KeyCode.A);
         bool IsRStrafe = Input.GetKey(KeyCode.D);
         bool IsGunsighting = Input.GetKey(KeyCode.Mouse1);
-        Debug.Log(IsGunsighting);
+        //Debug.Log(IsGunsighting);
         // IDLE
         /*  _animator.SetBool("isWalk", false);
           _animator.SetBool("isRun", false);

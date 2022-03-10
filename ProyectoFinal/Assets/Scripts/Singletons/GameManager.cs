@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int reintentos = 0;
+    public int LastSavePoint;
 
     private void Awake()
     {
