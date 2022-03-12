@@ -5,42 +5,59 @@ using UnityEngine;
 public class PatrolBehavior : MonoBehaviour
 {
     [SerializeField] float speed = 5;
-    [SerializeField] Quaternion angulo = Quaternion.Euler(10, 0, 0f);
+    [SerializeField] float timeToTurn = 10;
+    [SerializeField] float rotationSpeed = 10;
     float timer;
     bool timeUp;
+    //deben tomar una unica vez los datos por cada rotacion de 90 grados
+    //https://docs.unity3d.com/ScriptReference/Mathf.LerpAngle.html
+    Vector3 actualY;
+    Vector3 newY;
+    bool newData = false; 
+
+        Vector3 lol;
 
     void Update()
     {
-        Patrol();
-        checkTurn();
-        timer =timer+ Time.deltaTime;
-        Debug.Log("tiempo" + timer);
+        timer = timer + Time.deltaTime;
+        Turn90();
+        //Move();
     }
 
-    void Patrol()
+    void Turn90()
+    {
+        if (newData == false)
+        {
+            Debug.Log("solo debo ver este cartel una vez");
+            actualY = transform.eulerAngles;
+            newY = actualY + new Vector3(0, 90, 0);
+            newData = true;
+        }
+        Debug.Log("esta es la posicion inicial y no tiene que cambiar" + actualY);
+        Debug.Log("esta es la posicion final y no tiene que cambiar" + newY);
+
+        if (lol != newY)
+        {
+            Debug.Log(" transform es " +transform.eulerAngles);
+            transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime));
+
+            Vector3 lol = new Vector3(Mathf.Round(transform.eulerAngles.x), Mathf.Round(transform.eulerAngles.y),Mathf.Round(transform.eulerAngles.z) );
+
+            Debug.Log("lol es " +lol);
+        }
+    } 
+
+    /*void Move()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-    }
-
-    void checkTurn()
-    {
-        if (Input.GetKey("y"))
+        
+        if(timeToTurn > timer) 
         {
-            if (timer > 1)
-            {
-                timeUp = true;
-                timer = 0;
-            }
-            else
-            {
-                timeUp = false;
-            }
-
-            if (timeUp)
-            {
-                transform.rotation = Quaternion.AngleAxis(90, Vector3.up) * transform.rotation;
-            }
+            transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime));
         }
-    }
+    }*/
+
+
+
 
 }
