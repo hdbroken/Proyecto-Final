@@ -5,59 +5,66 @@ using UnityEngine;
 public class PatrolBehavior : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 10;
+    [SerializeField] float speed = 10; 
     Vector3 actualY;
     Vector3 newY;
     bool newData = false;
-    bool fix = false;
+    bool proceed = false;
     void Update()
     {
+        move();
+        boton();
         Turn90();
+    }
+    void move()
+    {
+        if (!proceed)
+        { 
+            transform.Translate(Vector3.forward * Time.deltaTime * speed); 
+        }
+    }
+    void boton()
+    {
+        if (Input.GetKey("y"))
+        {
+            proceed = true;
+        }
     }
     void Turn90()
     {
-        if (transform.eulerAngles == new Vector3(0, 270, 0))
+        if (proceed)
         {
             if (newData == false)
             {
                 actualY = transform.eulerAngles;
-                newY = new Vector3(0, 0, 0);
-                newData = true;
-            }
-            if (transform.eulerAngles.y >= newY.y)
-            {
-                transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime), Space.Self);
-            }
-            /*if (transform.eulerAngles.y < newY.y)
-            {
-                fix = true;
-            }
-            if (fix)
-            {
-                transform.eulerAngles = newY;
-                fix = false;
-            }*/
-        }
-        else
-        {
-            if (newData == false)
-            {
-                actualY = transform.eulerAngles;
-                newY = actualY + new Vector3(0, 90, 0);
+
+                if (actualY.y == 270)
+                {
+                    newY = actualY + new Vector3(0, 89, 0);
+                }
+                else
+                {
+                    newY = actualY + new Vector3(0, 90, 0);
+                }
                 newData = true;
             }
             if (transform.eulerAngles.y <= newY.y)
             {
                 transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime), Space.Self);
+                if (transform.eulerAngles.y >= 359)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    newY = new Vector3(0, 0, 0);
+                    Debug.Log(transform.eulerAngles.y);
+                }
             }
             if (transform.eulerAngles.y > newY.y)
             {
-                fix = true;
-            }
-            if (fix)
-            {
                 transform.eulerAngles = newY;
-                fix = false;
+                proceed = false;
+                newData = false;
             }
         }
     }
 }
+
