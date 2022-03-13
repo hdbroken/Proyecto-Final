@@ -4,26 +4,46 @@ using UnityEngine;
 
 public class PatrolBehavior : MonoBehaviour
 {
+    //Move
+    [SerializeField] float speed = 10;
+    [SerializeField] float timeToTurn = 4;
+    private float timer;
+    private bool proceed = false;
+    //Turn Data
     [SerializeField] float rotationSpeed = 10;
-    [SerializeField] float speed = 10; 
-    Vector3 actualY;
-    Vector3 newY;
-    bool newData = false;
-    bool proceed = false;
+    private Vector3 actualY;
+    private Vector3 newY;
+    private bool newData = false;
+    int contador = 0;
+
     void Update()
     {
-        move();
-        boton();
+        timer += Time.deltaTime;
+        Move();
+        CheckCollider();
+        Boton();
         Turn90();
     }
-    void move()
+    void Move()
     {
+        Debug.Log("el tiempo es: " + timer);
         if (!proceed)
-        { 
-            transform.Translate(Vector3.forward * Time.deltaTime * speed); 
+        {
+            if (timeToTurn >= timer)
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            }
+            else
+            {
+                proceed = true;
+            }
         }
     }
-    void boton()
+    void CheckCollider() 
+    {
+
+    }
+    void Boton()
     {
         if (Input.GetKey("y"))
         {
@@ -48,9 +68,11 @@ public class PatrolBehavior : MonoBehaviour
                 }
                 newData = true;
             }
+
             if (transform.eulerAngles.y <= newY.y)
             {
                 transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime), Space.Self);
+
                 if (transform.eulerAngles.y >= 359)
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
@@ -58,11 +80,18 @@ public class PatrolBehavior : MonoBehaviour
                     Debug.Log(transform.eulerAngles.y);
                 }
             }
+
             if (transform.eulerAngles.y > newY.y)
             {
                 transform.eulerAngles = newY;
                 proceed = false;
                 newData = false;
+                contador++;
+                if (contador == 2)
+                {
+                    timer = 0;
+                    contador = 0;
+                }
             }
         }
     }
