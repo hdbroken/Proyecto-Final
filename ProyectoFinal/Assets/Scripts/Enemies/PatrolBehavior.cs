@@ -20,13 +20,26 @@ public class PatrolBehavior : MonoBehaviour
     {
         timer += Time.deltaTime;
         Move();
-        CheckCollider();
         Boton();
-        Turn90();
+        Turn90();       
+    }
+
+   /* private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("bb");
+        contador++;
+        proceed = true;
+    }*/
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Debug.Log("bb");
+        contador++;
+        proceed = true;
     }
     void Move()
     {
-        Debug.Log("el tiempo es: " + timer);
+       // Debug.Log("el tiempo es: " + timer);
         if (!proceed)
         {
             if (timeToTurn >= timer)
@@ -39,10 +52,7 @@ public class PatrolBehavior : MonoBehaviour
             }
         }
     }
-    void CheckCollider() 
-    {
-
-    }
+    
     void Boton()
     {
         if (Input.GetKey("y"))
@@ -71,13 +81,14 @@ public class PatrolBehavior : MonoBehaviour
 
             if (transform.eulerAngles.y <= newY.y)
             {
+                
                 transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime), Space.Self);
 
                 if (transform.eulerAngles.y >= 359)
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     newY = new Vector3(0, 0, 0);
-                    Debug.Log(transform.eulerAngles.y);
+                   // Debug.Log(transform.eulerAngles.y);
                 }
             }
 
@@ -87,7 +98,7 @@ public class PatrolBehavior : MonoBehaviour
                 proceed = false;
                 newData = false;
                 contador++;
-                if (contador == 2)
+                if (contador >= 2)
                 {
                     timer = 0;
                     contador = 0;
