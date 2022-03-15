@@ -47,6 +47,7 @@ public class FirstPersonCC : MonoBehaviour
         TouchTheFloor();
         Movement();
         _fire.Shooting(_headCamera);
+        Pause();
     }
 
     private void Movement()
@@ -121,5 +122,13 @@ public class FirstPersonCC : MonoBehaviour
     private void TouchTheFloor()
     {
        _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _gravity * Time.deltaTime);
+    }
+
+    private void Pause()
+    {
+       /* if(Input.GetKey(KeyCode.Escape))
+        {
+            //GameManager.Pause;
+        }*/
     }
 }
