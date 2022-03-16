@@ -1178,6 +1178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameInitialScene: Scene Martin
+  _animationStartGame: {fileID: 0}
 --- !u!1 &7574273477160660303
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class FirstPersonCC : MonoBehaviour
     [SerializeField]
     private float _gravity = 9.8f;
 
-    
+
 
     [SerializeField]
     private float _HorizontalSensitibity = 2;
@@ -19,7 +19,7 @@ public class FirstPersonCC : MonoBehaviour
     private float _VerticalSensitibity = 2;
 
     [SerializeField]
-    private float _limitHeadUp = 60 ;
+    private float _limitHeadUp = 60;
     [SerializeField]
     private float _limitHeadDown = 60;
 
@@ -47,13 +47,12 @@ public class FirstPersonCC : MonoBehaviour
         TouchTheFloor();
         Movement();
         _fire.Shooting(_headCamera);
-        Pause();
     }
 
     private void Movement()
     {
         if (PlayerIsGrounded())
-        MoveFeet();
+            MoveFeet();
         MoveHead();
     }
 
@@ -62,14 +61,14 @@ public class FirstPersonCC : MonoBehaviour
         if (_ccPlayer.isGrounded) return true;
         else return false;
     }
-    
+
     private void MoveHead()
     {
         Quaternion vAngle = new Quaternion();
         Quaternion hAngle = new Quaternion();
-        
-        DirectionToLook(ref vAngle,ref hAngle);
-        Look(ref vAngle,ref hAngle);          
+
+        DirectionToLook(ref vAngle, ref hAngle);
+        Look(ref vAngle, ref hAngle);
     }
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
@@ -91,24 +90,24 @@ public class FirstPersonCC : MonoBehaviour
     {
         if (IsRun())
         {
-            Move(DirectionToMove(),_runSpeed);
+            Move(DirectionToMove(), _runSpeed);
         }
         else
         {
-            Move(DirectionToMove(),_walkSpeed);
-        }        
+            Move(DirectionToMove(), _walkSpeed);
+        }
     }
-    
+
     private Vector3 DirectionToMove()
     {
         float hKeyboardAxis = Input.GetAxisRaw("Horizontal");
         float vkeyboardAxis = Input.GetAxisRaw("Vertical");
-        Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);   
+        Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);
 
-        return directionToMove;            
+        return directionToMove;
     }
 
-    private bool IsRun() 
+    private bool IsRun()
     {
         if (Input.GetKey(KeyCode.LeftShift)) return true;
         else return false;
@@ -116,19 +115,12 @@ public class FirstPersonCC : MonoBehaviour
 
     private void Move(Vector3 directionToMove, float speed)
     {
-       _ccPlayer.Move(transform.TransformDirection(directionToMove) * speed * Time.deltaTime);    
+        _ccPlayer.Move(transform.TransformDirection(directionToMove) * speed * Time.deltaTime);
     }
 
     private void TouchTheFloor()
     {
-       _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _gravity * Time.deltaTime);
+        _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _gravity * Time.deltaTime);
     }
 
-    private void Pause()
-    {
-       /* if(Input.GetKey(KeyCode.Escape))
-        {
-            //GameManager.Pause;
-        }*/
-    }
 }

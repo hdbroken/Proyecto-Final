@@ -10,6 +10,9 @@ public class MainController : MonoBehaviour
 {
     [SerializeField]
     private string _nameInitialScene = "Level1";
+
+    [SerializeField]
+    private GameObject _animationStartGame;
     /*[SerializeField]
     private Button _play;
     [SerializeField]
@@ -48,8 +51,14 @@ public class MainController : MonoBehaviour
    
     public void Play()
     {
-        SceneManager.LoadScene(_nameInitialScene);
+        _animationStartGame.SetActive(!_animationStartGame.activeSelf);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            _animationStartGame.SetActive(!_animationStartGame.activeSelf);
+            SceneManager.LoadScene(_nameInitialScene);
+        }
     }
+
     public void Exit()
     {
         Application.Quit();

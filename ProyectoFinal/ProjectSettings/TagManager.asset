@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ENEMY
-  - SavePoint  
+  - SavePoint
   - MenuPause
+  - Enemy
   layers:
   - Default
   - TransparentFX
