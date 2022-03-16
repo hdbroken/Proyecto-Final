@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4237609523179112503}
   - component: {fileID: 5004724324071005464}
   - component: {fileID: 189553589187414554}
+  - component: {fileID: 662578366976931578}
   m_Layer: 0
   m_Name: FaceA
   m_TagString: Untagged
@@ -162,6 +163,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &662578366976931578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114917492407426289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014999999, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: 0.0025004765, y: 0, z: 0}
 --- !u!1 &1699914840742820517
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +187,7 @@ GameObject:
   - component: {fileID: 2525237335784624132}
   - component: {fileID: 4073239301466524211}
   - component: {fileID: 5210424831688005580}
+  - component: {fileID: 8801350551107553480}
   m_Layer: 0
   m_Name: FaceB
   m_TagString: Untagged
@@ -243,6 +258,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8801350551107553480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699914840742820517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015000037, y: 0.02, z: 0.02}
+  m_Center: {x: 0.0025009534, y: 1.8626451e-11, z: 4.9670537e-12}
 --- !u!1 &2607538373275357656
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +282,7 @@ GameObject:
   - component: {fileID: 1944821564324448989}
   - component: {fileID: 1823652333786370673}
   - component: {fileID: 5458007155685039207}
+  - component: {fileID: 7300240545132476396}
   m_Layer: 0
   m_Name: FaceC
   m_TagString: Untagged
@@ -324,6 +353,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7300240545132476396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607538373275357656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014999999, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: 0.0024999997, y: 0, z: 0}
 --- !u!1 &2700444946887940480
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4517622030784767167}
+  - component: {fileID: 971251372284651891}
   m_Layer: 0
   m_Name: Patrol1
   m_TagString: Untagged
@@ -429,7 +472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3889423296966950405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3504229, y: 7.486997, z: -6.1504784}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4237609523179112503}
@@ -445,6 +488,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &971251372284651891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889423296966950405}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.02, y: 2.31, z: 1.73}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4731641634956617202
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +836,7 @@ GameObject:
   - component: {fileID: 2766436931007014844}
   - component: {fileID: 6793513915969398427}
   - component: {fileID: 5761813288955070621}
+  - component: {fileID: 3654502221550843640}
   m_Layer: 0
   m_Name: FaceD
   m_TagString: Untagged
@@ -850,3 +907,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3654502221550843640
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9107464037418265839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015000037, y: 0.02, z: 0.02}
+  m_Center: {x: 0.0024999997, y: 1.8626451e-11, z: 4.9670537e-12}
