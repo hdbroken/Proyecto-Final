@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-
     private Animator _animator;
 
     private void Awake()
@@ -32,6 +31,7 @@ public class PlayerAnimationController : MonoBehaviour
         //
         if(IsGunsighting)
         {
+           
             _animator.SetBool("isPistolIdle", true);
 
             _animator.SetBool("isWalk", false);
