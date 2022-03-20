@@ -7,6 +7,8 @@ TagManager:
   - SavePoint
   - MenuPause
   - Enemy
+  - ENEMY
+  - Face
   layers:
   - Default
   - TransparentFX
