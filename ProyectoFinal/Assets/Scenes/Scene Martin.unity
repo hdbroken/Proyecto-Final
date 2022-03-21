@@ -2013,6 +2013,10 @@ PrefabInstance:
       propertyPath: _menuPause
       value: 
       objectReference: {fileID: 1933631931}
+    - target: {fileID: 2411784424503267662, guid: 26dcbee6251a44042ac5c06736d7ea2d, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 1072020258}
     - target: {fileID: 3239058167709548632, guid: 26dcbee6251a44042ac5c06736d7ea2d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -5471,6 +5475,11 @@ Transform:
   m_Father: {fileID: 1304176148}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1072020258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4374652205834939980, guid: 00b9a5e7262fe7a44a972ad7b5f9d92a, type: 3}
+  m_PrefabInstance: {fileID: 8862951330613239772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1127467177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12730,10 +12739,6 @@ PrefabInstance:
     - target: {fileID: 4374652205834939980, guid: 00b9a5e7262fe7a44a972ad7b5f9d92a, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 4374652205834939980, guid: 00b9a5e7262fe7a44a972ad7b5f9d92a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b9a5e7262fe7a44a972ad7b5f9d92a, type: 3}
