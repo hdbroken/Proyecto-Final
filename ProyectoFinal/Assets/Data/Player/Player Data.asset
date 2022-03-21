@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb7d53f9f8153e42afdf943b104eb76, type: 3}
+  m_Name: Player Data
+  m_EditorClassIdentifier: 
+  _gravity: 9.8
+  _walkSpeed: 5
+  _runSpeed: 10
+  _horizontalSensitivity: 10
+  _verticalSensitivity: 10
+  _limitHeadUp: 30
+  _limitHeadDown: 60

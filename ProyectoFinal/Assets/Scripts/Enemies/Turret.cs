@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : FieldOfView
 {
-    private GameObject _objective;
-    private FieldOfView _turret;
+    private GameObject _target;   
 
 
     private void Awake()
     {
-        _objective = GameObject.FindGameObjectWithTag("Player");        
-        _turret = GetComponent<FieldOfView>();
+        _target = GameObject.FindGameObjectWithTag("Player");            
     }
     void Start()
     {
@@ -21,18 +19,18 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_turret.IsInLOS())
+        if(IsInLOS(_target))
         {
             LookPlayer();
-            if (_turret.IsInShootingRange())
+            if (IsInShootingRange(_target))
             Shoot();
         }
     }
 
     private void LookPlayer()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(_objective.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _fov.speedToRotation);
     }
 
     private void Shoot()

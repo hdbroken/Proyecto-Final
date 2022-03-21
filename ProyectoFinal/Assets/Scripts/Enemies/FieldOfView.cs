@@ -4,74 +4,54 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
-{
-    
+{ 
     [SerializeField]
-    private float _viewDistance = 7;
-
-    [SerializeField]
-    private float _viewAngle = 45;
-
-    [SerializeField]
-    private float _shootDistance = 5;
-
-    private GameObject _player;
-
-    private void Awake()
-    {
-        _player = GameObject.FindGameObjectWithTag("Player");
-    }
+    protected FieldOfViewData _fov;
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _viewDistance);
+        Gizmos.DrawWireSphere(transform.position, _fov.viewDistance);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _shootDistance);
+        Gizmos.DrawWireSphere(transform.position, _fov.shootDistance);
 
-        Vector3 fovLine1 = Quaternion.AngleAxis(_viewAngle, transform.up) * transform.forward * _viewDistance;
-        Vector3 fovLine2 = Quaternion.AngleAxis(-_viewAngle, transform.up) * transform.forward * _viewDistance;
+        Vector3 fovLine1 = Quaternion.AngleAxis(_fov.viewAngle, transform.up) * transform.forward * _fov.viewDistance;
+        Vector3 fovLine2 = Quaternion.AngleAxis(-_fov.viewAngle, transform.up) * transform.forward * _fov.viewDistance;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, fovLine1);
         Gizmos.DrawRay(transform.position, fovLine2);
-
-        if (_player != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position, (_player.transform.position - transform.position).normalized * _viewDistance);
-        }
-
+        
         Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position, transform.forward * _viewDistance);
+        Gizmos.DrawRay(transform.position, transform.forward * _fov.viewDistance);
     }
     
-    public bool IsInShootingRange()
+    public bool IsInShootingRange(GameObject target)
     {
-        float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
-        if (IsInLOS() && (distanceToPlayer <= _shootDistance))
+        float distanceToPlayer = Vector3.Distance(target.transform.position, transform.position);
+        if (IsInLOS(target) && (distanceToPlayer <= _fov.shootDistance))
         {
             return true;
         }
         else return false;
     }
-    public bool IsInLOS()
+    public bool IsInLOS(GameObject target)
     {
-        Vector3 playerPosition = new Vector3();
-        Vector3 directionToPlayer = new Vector3();
+        Vector3 targetPosition = new Vector3();
+        Vector3 directionToTarget = new Vector3();
 
-        playerPosition = _player.transform.position;
-        float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+        targetPosition = target.transform.position;
+        float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
         
 
-        directionToPlayer = (_player.transform.position - transform.position).normalized;
+        directionToTarget = (target.transform.position - transform.position).normalized;
 
-        if (distanceToPlayer <= _viewDistance)
+        if (distanceToTarget <= _fov.viewDistance)
         {
-            if (PlayerIsBetweenAngles(directionToPlayer))
+            if (PlayerIsBetweenAngles(directionToTarget))
             {
-                if (ICanSeePlayer(directionToPlayer))
+                if (ICanSeePlayer(target,directionToTarget))
                     return true;
                 else
                     return false;
@@ -83,13 +63,13 @@ public class FieldOfView : MonoBehaviour
             return false;
     }
 
-    private bool ICanSeePlayer(Vector3 directionToPlayer)
+    private bool ICanSeePlayer(GameObject target, Vector3 directionToPlayer)
     {
         RaycastHit hit;
-        bool esta = Physics.Raycast(transform.position, directionToPlayer, out hit, _viewDistance);
+        bool esta = Physics.Raycast(transform.position, directionToPlayer, out hit, _fov.viewDistance);
         if (esta)
         {
-            if (hit.transform == _player.transform)
+            if (hit.transform == target.transform)
             {
                 return true;
             }
@@ -104,7 +84,7 @@ public class FieldOfView : MonoBehaviour
         float cosX = p / (transform.forward.magnitude * directionToPlayer.magnitude);
         float angle = Mathf.Acos(cosX) * Mathf.Rad2Deg;
 
-        if (angle < _viewAngle)
+        if (angle < _fov.viewAngle)
             return true;
         else
             return false;

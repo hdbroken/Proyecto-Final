@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3200400066428328384}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Head Turret
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3290829916018563893, guid: 33a132aead4632b418a188d98f4147b4, type: 3}
+      propertyPath: _fov
+      value: 
+      objectReference: {fileID: 11400000, guid: 85d307d0dbe4d264cb8e4b34015f0d24, type: 2}
+    - target: {fileID: 4001361647187359328, guid: 33a132aead4632b418a188d98f4147b4, type: 3}
+      propertyPath: _fov
+      value: 
+      objectReference: {fileID: 11400000, guid: 85d307d0dbe4d264cb8e4b34015f0d24, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4001361647187359328, guid: 33a132aead4632b418a188d98f4147b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33a132aead4632b418a188d98f4147b4, type: 3}
 --- !u!4 &9158416332438116279 stripped
 Transform:

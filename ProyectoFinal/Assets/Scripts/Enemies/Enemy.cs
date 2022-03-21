@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : FieldOfView
 {
     [SerializeField]
     private WaypointsManager _waypointList;
 
-    private GameObject _objective;
-    private FieldOfView _player;
+    private GameObject _target;    
     private NavMeshAgent _navigation;
     private int _index = 0;
     private Animator _enemyAnimator;
@@ -18,34 +17,23 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _navigation = GetComponent<NavMeshAgent>();
-        _objective = GameObject.FindGameObjectWithTag("Player");
-        _player = GetComponent<FieldOfView>();
+        _target = GameObject.FindGameObjectWithTag("Player");        
         _enemyAnimator = GetComponentInChildren<Animator>();
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         Move();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        /*if (_player.IsInLOS())
-        {
-            _navigation.isStopped = true;
-            LookPlayer();
-        }*/
         MoveToNextPoint();
-
     }
 
     private void MoveToNextPoint()
     {
-        if (!_player.IsInLOS())
+        if (!IsInLOS(_target))
         {
             _navigation.isStopped = false;
             if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", true);
@@ -71,12 +59,12 @@ public class Enemy : MonoBehaviour
                 Move();
             }
         }
-        else if (_player.IsInLOS())
+        else if (IsInLOS(_target))
         {
             _navigation.isStopped = true;
             if(_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
             LookPlayer();
-            if (_player.IsInShootingRange())
+            if (IsInShootingRange(_target))
             {
                 ShootPlayer();
             }
@@ -97,7 +85,7 @@ public class Enemy : MonoBehaviour
     private void LookPlayer()
     {
 
-        Quaternion targetRotation = Quaternion.LookRotation(_objective.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _fov.speedToRotation);
     }
 }

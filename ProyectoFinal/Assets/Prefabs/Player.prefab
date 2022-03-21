@@ -69,13 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c322818e14fb4e74eb1ce2832d100a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 5
-  _runSpeed: 8
-  _gravity: 9.8
-  _HorizontalSensitibity: 2
-  _VerticalSensitibity: 2
-  _limitHeadUp: 60
-  _limitHeadDown: 60
+  _playerData: {fileID: 11400000, guid: 3757b98f70081b347acda90a844efcc2, type: 2}
 --- !u!120 &68555606
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -210,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb680e250ed77c4897af87d818ba111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuPause: {fileID: 0}
 --- !u!114 &1601549517
 MonoBehaviour:
   m_ObjectHideFlags: 0

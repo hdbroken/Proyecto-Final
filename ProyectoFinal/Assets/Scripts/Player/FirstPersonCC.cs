@@ -4,24 +4,8 @@ using UnityEngine;
 
 public class FirstPersonCC : MonoBehaviour
 {
-    [SerializeField]
-    private float _walkSpeed = 5;
-    [SerializeField]
-    private float _runSpeed = 10;
-    [SerializeField]
-    private float _gravity = 9.8f;
-
-
-
-    [SerializeField]
-    private float _HorizontalSensitibity = 2;
-    [SerializeField]
-    private float _VerticalSensitibity = 2;
-
-    [SerializeField]
-    private float _limitHeadUp = 60;
-    [SerializeField]
-    private float _limitHeadDown = 60;
+    [SerializeField] 
+    private PlayerData _playerData;
 
     private float _hMouse;
     private float _vMouse;
@@ -32,21 +16,19 @@ public class FirstPersonCC : MonoBehaviour
     private Animator _playerAnimator;
 
 
-    void Awake()
+    private void Awake()
     {
         _playerAnimator = GetComponentInChildren<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
-        _fire = GetComponent<Shoot>();
-        _limitHeadDown *= -1;
+        _fire = GetComponent<Shoot>();        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         TouchTheFloor();
         Movement();
-        _fire.Shooting(_headCamera);
+        _fire.Shooting(_headCamera);        
     }
 
     private void Movement()
@@ -73,9 +55,9 @@ public class FirstPersonCC : MonoBehaviour
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
     {
-        _hMouse += Input.GetAxis("Mouse X") * _HorizontalSensitibity;
-        _vMouse -= Input.GetAxis("Mouse Y") * _VerticalSensitibity;
-        _vMouse = Mathf.Clamp(_vMouse, _limitHeadDown, _limitHeadUp);
+        _hMouse += Input.GetAxis("Mouse X") * _playerData.horizontalSensitivity;
+        _vMouse -= Input.GetAxis("Mouse Y") * _playerData.verticalSensitivity;
+        _vMouse = Mathf.Clamp(_vMouse, _playerData.limitHeadDown, _playerData.limitHeadUp);
         vAngle = Quaternion.Euler(_vMouse, 0, 0);
         hAngle = Quaternion.Euler(0, _hMouse, 0);
     }
@@ -90,11 +72,11 @@ public class FirstPersonCC : MonoBehaviour
     {
         if (IsRun())
         {
-            Move(DirectionToMove(), _runSpeed);
+            Move(DirectionToMove(), _playerData.runSpeed);
         }
         else
         {
-            Move(DirectionToMove(), _walkSpeed);
+            Move(DirectionToMove(), _playerData.walkSpeed);
         }
     }
 
@@ -120,7 +102,7 @@ public class FirstPersonCC : MonoBehaviour
 
     private void TouchTheFloor()
     {
-        _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _gravity * Time.deltaTime);
+        _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _playerData.gravity * Time.deltaTime);
     }
 
 }
