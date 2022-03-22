@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldOfView : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 { 
     [SerializeField]
-    protected FieldOfViewData _fov;
+    protected EnemyBaseData _fov;
 
     private void OnDrawGizmos()
     {

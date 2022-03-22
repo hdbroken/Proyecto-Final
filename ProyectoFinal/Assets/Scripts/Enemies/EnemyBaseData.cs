@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New fov Data", menuName = "Create fov Data")]
-public class FieldOfViewData : ScriptableObject
+[CreateAssetMenu(fileName = "New Enemy Data", menuName = "Create Enemy Data")]
+public class EnemyBaseData : ScriptableObject
 {
     
     [SerializeField]

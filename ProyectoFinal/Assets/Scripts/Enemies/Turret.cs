@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : FieldOfView
+public class Turret : EnemyBase
 {
     private GameObject _target;   
 
