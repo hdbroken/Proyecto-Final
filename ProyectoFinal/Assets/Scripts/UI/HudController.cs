@@ -10,7 +10,10 @@ public class HudController : MonoBehaviour
     private TextMeshProUGUI _textSuccess;
 
     [SerializeField]
-    private GameObject _sightAndWeaponHUD;
+    private GameObject _sightHud;
+
+    [SerializeField]
+    private GameObject _weaponHud;
 
     private void Awake()
     {
@@ -24,7 +27,12 @@ public class HudController : MonoBehaviour
 
     public void OnAimEvent(bool isPaused)
     {
-        _sightAndWeaponHUD.SetActive(isPaused);
+        _sightHud.SetActive(isPaused);
+    }
+
+    public void OnActivateHudEvent()
+    {
+        _weaponHud.SetActive(!_weaponHud.activeSelf);
     }
 
     private void OnWinLevelEvent()

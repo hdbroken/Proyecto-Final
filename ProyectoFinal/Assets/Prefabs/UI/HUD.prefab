@@ -108,12 +108,12 @@ RectTransform:
   - {fileID: 6464787406435934113}
   - {fileID: 5587076059259135252}
   - {fileID: 4633942720303372270}
-  m_Father: {fileID: 3726050013029509554}
+  m_Father: {fileID: 1688537947256962641}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -327.49997, y: -152.54408}
+  m_AnchoredPosition: {x: 72.50009, y: 72.320755}
   m_SizeDelta: {x: 145, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5662629727075320877
@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4374234101680840531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256,10 +256,10 @@ RectTransform:
   m_GameObject: {fileID: 3507613753545902042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
   m_Children: []
-  m_Father: {fileID: 3726050013029509554}
-  m_RootOrder: 0
+  m_Father: {fileID: 1688537947256962641}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -411,7 +411,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 3357817804833960967}
-  - {fileID: 3726050013029509554}
+  - {fileID: 8437680490040009848}
+  - {fileID: 4374234101680840531}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -494,7 +495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textSuccess: {fileID: 6060703229577255921}
-  _sightAndWeaponHUD: {fileID: 5675606331304103958}
+  _sightHud: {fileID: 3507613753545902042}
+  _weaponHud: {fileID: 1892830438613246258}
 --- !u!1 &4770375905288289115
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,35 +706,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &5675606331304103958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3726050013029509554}
-  m_Layer: 0
-  m_Name: Sight and Weapon HUD
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3726050013029509554
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5675606331304103958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4374234101680840531}
-  - {fileID: 8437680490040009848}
-  m_Father: {fileID: 1688537947256962641}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

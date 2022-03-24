@@ -14,10 +14,14 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private UnityEvent onUnClickAimButtonEvent;
 
+    [SerializeField]
+    private UnityEvent onPressKeyHudEvent;
+
     void Update()
     {
         Pause();
         Aim();
+        Hud();
     }
 
 
@@ -38,6 +42,14 @@ public class InputController : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.Mouse1))
         {
            onUnClickAimButtonEvent?.Invoke();
+        }
+    }
+
+    private void Hud()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            onPressKeyHudEvent?.Invoke();
         }
     }
 }
