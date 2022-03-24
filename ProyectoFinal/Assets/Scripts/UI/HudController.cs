@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class HudController : MonoBehaviour
 {
@@ -13,22 +14,19 @@ public class HudController : MonoBehaviour
 
     private void Awake()
     {
-       // EventManager.onClickAimButtonEvent += OnAimEvent;
-        EventManager.onWinLevel += OnWinLevelEvent;        
+        EventManager.onWinLevel += OnWinLevelEvent;
     }
 
     private void OnDestroy()
     {
-        //EventManager.onPauseGame -= OnMenuPauseEvent;
         EventManager.onWinLevel -= OnWinLevelEvent;
     }
 
-
     public void OnAimEvent(bool isPaused)
     {
-        _sightAndWeaponHUD.SetActive(isPaused);        
+        _sightAndWeaponHUD.SetActive(isPaused);
     }
-    
+
     private void OnWinLevelEvent()
     {
         _textSuccess.gameObject.SetActive(true);

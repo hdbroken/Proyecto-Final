@@ -14,23 +14,21 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GameObject _player;
-
+    
     private Scene _scene;
 
     private void OnEnable()
     {
         EventManager.onPauseGame += OnGamePauseEvent;
         EventManager.onPauseGameWithMenu += OnGamePauseWithMenuEvent;
-        EventManager.onPlayerDie += OnPlayerDieEvent;
-      //  EventManager.onWinLevel += OnWinLevelEvent;
+        EventManager.onPlayerDie += OnPlayerDieEvent;      
     }
 
     private void OnDisable()
     {
         EventManager.onPauseGame -= OnGamePauseEvent;
         EventManager.onPauseGameWithMenu -= OnGamePauseWithMenuEvent;
-        EventManager.onPlayerDie -= OnPlayerDieEvent;
-       // EventManager.onWinLevel -= OnWinLevelEvent;
+        EventManager.onPlayerDie -= OnPlayerDieEvent;       
     }
 
     private void Awake()

@@ -9,8 +9,10 @@ public class InputController : MonoBehaviour
     private GameObject _menu;
 
     [SerializeField]
-    public UnityEvent<bool> onClickAimButtonEvent;
+    private UnityEvent onClickAimButtonEvent;
 
+    [SerializeField]
+    private UnityEvent onUnClickAimButtonEvent;
 
     void Update()
     {
@@ -27,18 +29,15 @@ public class InputController : MonoBehaviour
         }
     }
 
-    void Aim()
+    private void Aim()
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            
-            //EventManagerUnity.onClickAimButtonEvent?.Invoke(true);
+           onClickAimButtonEvent?.Invoke();
         }
         else if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-          //  EventManagerUnity.onClickAimButtonEvent?.Invoke(false);
+           onUnClickAimButtonEvent?.Invoke();
         }
-
     }
-
 }
