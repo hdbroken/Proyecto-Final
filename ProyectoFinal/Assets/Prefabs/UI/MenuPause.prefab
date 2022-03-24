@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 6329042584144467528}
   m_Layer: 5
   m_Name: MenuPause
-  m_TagString: MenuPause
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameInitialScene: Level1
+  _animationStartGame: {fileID: 0}
 --- !u!1 &826335254969301819
 GameObject:
   m_ObjectHideFlags: 0

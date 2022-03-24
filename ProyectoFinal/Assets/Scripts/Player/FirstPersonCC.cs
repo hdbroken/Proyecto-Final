@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FirstPersonCC : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private PlayerData _playerData;
 
     private float _hMouse;
@@ -15,33 +16,45 @@ public class FirstPersonCC : MonoBehaviour
     private Shoot _fire;
     private Animator _playerAnimator;
 
+    private void OnPausedGameEvent(bool obj)
+    {
+        this.enabled = !obj;
+    }
 
     private void Awake()
     {
+        EventManager.onPauseGame += OnPausedGameEvent;
         _playerAnimator = GetComponentInChildren<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
-        _fire = GetComponent<Shoot>();        
+        _fire = GetComponent<Shoot>();
     }
-    
+    private void OnDestroy()
+    {
+        EventManager.onPauseGame -= OnPausedGameEvent;
+    }
+
     void Update()
     {
         TouchTheFloor();
         Movement();
-        _fire.Shooting(_headCamera);        
+        _fire.Shooting(_headCamera);
     }
 
     private void Movement()
     {
         if (PlayerIsGrounded())
             MoveFeet();
+
         MoveHead();
     }
 
     private bool PlayerIsGrounded()
     {
-        if (_ccPlayer.isGrounded) return true;
-        else return false;
+        if (_ccPlayer.isGrounded) 
+            return true;
+        else
+            return false;
     }
 
     private void MoveHead()

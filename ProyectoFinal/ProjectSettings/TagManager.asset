@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - SavePoint
-  - MenuPause
   - Enemy
+  - HUD
+  - Menu
+  - Winning Zone
   layers:
   - Default
   - TransparentFX

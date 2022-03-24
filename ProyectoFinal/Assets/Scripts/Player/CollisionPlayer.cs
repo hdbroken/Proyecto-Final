@@ -6,24 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class CollisionPlayer : MonoBehaviour
 {
-    public Scene _scene;
-
-    private void Awake()
-    {
-        _scene = SceneManager.GetActiveScene();
-    }
-
+    
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("tocando enemigo");
             GameManager.instance.reintentos++;
-            Kill();
+            EventManager.onPlayerDie?.Invoke();            
+        }       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Winning Zone"))
+        {
+            EventManager.onPauseGame?.Invoke(true);
+            EventManager.onWinLevel?.Invoke();
         }
     }
-    private void Kill()
-    {
-        SceneManager.LoadScene(_scene.name);
-    }    
+
 }
