@@ -5,10 +5,16 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     private LineRenderer laser;
+    private float timer;
 
     private void Awake()
     {
         laser = GetComponent<LineRenderer>();
+    }
+
+    private void Update()
+    {
+        //timer += Time.deltaTime;
     }
 
     public void Shooting(Camera player)
@@ -17,9 +23,7 @@ public class Shoot : MonoBehaviour
         {
             laser.SetPosition(0, (player.transform.position + new Vector3(0, -1, 0.1f)));
             laser.SetPosition(1, player.transform.forward * 1000);
-
-
-
+            
             RaycastHit hit;
 
             if (Physics.Raycast(player.transform.position, player.transform.forward, out hit))
@@ -27,16 +31,23 @@ public class Shoot : MonoBehaviour
                 var gObj = hit.collider.gameObject;
                 if (gObj.CompareTag("Face"))
                 {
-                    var script = gObj.GetComponent<FacePatrolBehavior>();
-                                                   
-                    if (null != script)
+                    timer += Time.deltaTime;
+                    Debug.Log($"tiempo continuo {timer}");
+                    if (timer >= 2)
                     {
-                        script.shoot();
+
+                        var script = gObj.GetComponent<FacePatrolBehavior>();
+
+                        if (null != script)
+                        {
+                            script.shoot();
+                        }
+                    if (hit.collider)
+                    {
+                        laser.SetPosition(1, hit.point);
                     }
-                }
-                if (hit.collider)
-                {
-                    laser.SetPosition(1, hit.point);
+                    timer = 0;
+                    }
                 }
             }
         }
@@ -45,7 +56,6 @@ public class Shoot : MonoBehaviour
             laser.SetPosition(0, player.transform.position);
             laser.SetPosition(1, player.transform.position);
         }
-
 
     }
 }

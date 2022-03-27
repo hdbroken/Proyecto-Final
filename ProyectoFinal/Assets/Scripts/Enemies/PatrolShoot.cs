@@ -14,7 +14,7 @@ public class PatrolShoot : MonoBehaviour
         timer += Time.deltaTime;
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         Remove();
-        Debug.Log(timer);
+        //Debug.Log(timer);
     }
 
     void Remove() 
