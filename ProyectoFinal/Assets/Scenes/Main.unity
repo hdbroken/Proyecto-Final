@@ -595,6 +595,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2662728019687277012, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: _nameInitialScene
+      value: SandBox Martin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662728019687277012, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
       propertyPath: _animationStartGame
       value: 
       objectReference: {fileID: 720459814}
