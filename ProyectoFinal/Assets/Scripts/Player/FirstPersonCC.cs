@@ -15,6 +15,7 @@ public class FirstPersonCC : MonoBehaviour
 
     private Shoot _fire;
     private Animator _playerAnimator;
+    private bool _isDead = false;
 
     private void OnPausedGameEvent(bool obj)
     {
@@ -28,6 +29,7 @@ public class FirstPersonCC : MonoBehaviour
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
         _fire = GetComponent<Shoot>();
+        Debug.Log(_playerData.limitHeadDown);
     }
     private void OnDestroy()
     {
@@ -59,11 +61,14 @@ public class FirstPersonCC : MonoBehaviour
 
     private void MoveHead()
     {
-        Quaternion vAngle = new Quaternion();
-        Quaternion hAngle = new Quaternion();
-
-        DirectionToLook(ref vAngle, ref hAngle);
-        Look(ref vAngle, ref hAngle);
+        if (!_isDead)
+        {
+            Quaternion vAngle = new Quaternion();
+            Quaternion hAngle = new Quaternion();
+        
+            DirectionToLook(ref vAngle, ref hAngle);
+            Look(vAngle, hAngle);
+        }
     }
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
@@ -72,10 +77,10 @@ public class FirstPersonCC : MonoBehaviour
         _vMouse -= Input.GetAxis("Mouse Y") * _playerData.verticalSensitivity;
         _vMouse = Mathf.Clamp(_vMouse, _playerData.limitHeadDown, _playerData.limitHeadUp);
         vAngle = Quaternion.Euler(_vMouse, 0, 0);
-        hAngle = Quaternion.Euler(0, _hMouse, 0);
+        hAngle = Quaternion.Euler(0, _hMouse, 0);        
     }
 
-    private void Look(ref Quaternion vAngle, ref Quaternion hAngle)
+    private void Look(Quaternion vAngle, Quaternion hAngle)
     {
         _headCamera.transform.localRotation = vAngle;
         transform.localRotation = hAngle;
@@ -98,7 +103,7 @@ public class FirstPersonCC : MonoBehaviour
         float hKeyboardAxis = Input.GetAxisRaw("Horizontal");
         float vkeyboardAxis = Input.GetAxisRaw("Vertical");
         Vector3 directionToMove = new Vector3(hKeyboardAxis, 0f, vkeyboardAxis);
-
+        
         return directionToMove;
     }
 
@@ -116,6 +121,30 @@ public class FirstPersonCC : MonoBehaviour
     private void TouchTheFloor()
     {
         _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _playerData.gravity * Time.deltaTime);
+    }
+
+    IEnumerator SmoothLook()
+    {
+        float angleDown = 0;
+
+        Quaternion lookDownAngle = new Quaternion();
+        
+        Quaternion samelook = transform.localRotation;
+        
+        while (angleDown < -_playerData.limitHeadDown)
+        {
+            Debug.Log(angleDown);
+            Debug.Log(lookDownAngle);
+            lookDownAngle = Quaternion.Euler(angleDown, 0, 0);
+            Look(lookDownAngle, samelook);            
+            yield return new WaitForSeconds(0.025f);
+            angleDown += 0.5f;
+        }
+    }
+    public void LookOnDeath()
+    {
+        _isDead = true;
+        StartCoroutine(SmoothLook());
     }
 
     public void StopMove()

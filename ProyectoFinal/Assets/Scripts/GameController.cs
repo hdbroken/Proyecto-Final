@@ -58,17 +58,16 @@ public class GameController : MonoBehaviour
 
     IEnumerator ReloadScene()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(_scene.name);
     }
     private void OnPlayerDieEvent()
     {
         FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();
         //_fadeOutDie.BlackOutOn();
-        moveController.StopMove();
+        moveController.LookOnDeath();
+        moveController.StopMove();        
         _globalVolume.Death();
         StartCoroutine(ReloadScene());        
     }
-
-
 }

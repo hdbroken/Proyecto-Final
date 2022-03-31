@@ -9,6 +9,8 @@ public class GlobalPPController : MonoBehaviour
     private DepthOfField _dof;
     private ColorGrading _colorGrading;
     private Grain _grain;
+    private Vignette _vignette;
+
     [SerializeField]
     private float _timer=0;
 
@@ -21,27 +23,30 @@ public class GlobalPPController : MonoBehaviour
         _globalPPVolume.profile.TryGetSettings<DepthOfField>(out _dof);
         _globalPPVolume.profile.TryGetSettings<ColorGrading>(out _colorGrading);
         _globalPPVolume.profile.TryGetSettings<Grain>(out _grain);
+        _globalPPVolume.profile.TryGetSettings<Vignette>(out _vignette);
     }
 
-    private void Update()
+    IEnumerator DOFAndVignette()
     {
-        _timer += Time.deltaTime;
+        float maxTime = _timer + 5;
+        float maxFocus = _dof.focusDistance.value;
+        while (_timer < maxTime)
+        {
+            _dof.focusDistance.value -= 0.2f;
+            _vignette.intensity.value += 0.02f;
+            yield return new WaitForSeconds(0.1f);
+            _timer += 0.2f;
+        }
     }
     public void Death()
-    {
-        float maxTime = _timer + 10;
-
+    {   
         _colorGrading.active = true;
         _grain.active = true;
         _dof.active = true;
-        
-        float maxFocus = _dof.focusDistance;
-        
-        Debug.Log(maxFocus);
-        if (_timer < maxTime)
-        {
-            Debug.Log(_timer);
-        }
+        _vignette.active = true;
+               
+        StartCoroutine(DOFAndVignette());
+               
         _timer = 0;
     }
 }
