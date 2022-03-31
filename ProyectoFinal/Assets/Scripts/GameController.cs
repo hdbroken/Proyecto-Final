@@ -14,7 +14,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GameObject _player;
-    
+
+    [SerializeField]
+    private Death _fadeOutDie;
+
+    [SerializeField]
+    private GlobalPPController _globalVolume;
     private Scene _scene;
 
     private void OnEnable()
@@ -33,7 +38,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        _scene = SceneManager.GetActiveScene();
+        _scene = SceneManager.GetActiveScene();        
     }
 
     private void OnGamePauseEvent(bool isPausedGame)
@@ -51,9 +56,18 @@ public class GameController : MonoBehaviour
         _menu.SetActive(isPausedGame);
     }
 
+    IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(_scene.name);
+    }
     private void OnPlayerDieEvent()
     {
-        SceneManager.LoadScene(_scene.name);
+        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();
+        //_fadeOutDie.BlackOutOn();
+        moveController.StopMove();
+        _globalVolume.Death();
+        StartCoroutine(ReloadScene());        
     }
 
 

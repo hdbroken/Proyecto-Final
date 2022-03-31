@@ -11,7 +11,7 @@ public class CollisionPlayer : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Enemy"))
         {
-            GameManager.instance.reintentos++;
+            GameManager.instance.reintentos++;            
             EventManager.onPlayerDie?.Invoke();            
         }       
     }

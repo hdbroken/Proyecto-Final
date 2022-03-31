@@ -118,4 +118,9 @@ public class FirstPersonCC : MonoBehaviour
         _ccPlayer.Move(transform.TransformDirection(Vector3.down) * _playerData.gravity * Time.deltaTime);
     }
 
+    public void StopMove()
+    {
+        this.enabled = false;
+        _playerAnimator.enabled = false;
+    }
 }
