@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 5615823412931103106}
   m_Layer: 0
   m_Name: turret 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,8 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4040c2f7a622fdd489bbf17b022a25c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewDistance: 10
-  _viewAngle: 180
+  _fov: {fileID: 0}
 --- !u!114 &5615823412931103106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +334,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b195c46a64964847a49f8741b39ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fov: {fileID: 0}
