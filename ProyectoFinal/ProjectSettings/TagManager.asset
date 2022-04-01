@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - SavePoint
-  - MenuPause
   - Enemy
-  - ENEMY
+  - HUD
+  - Menu
+  - Winning Zone 
   - Face
   layers:
   - Default
@@ -41,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Post Process
   m_SortingLayers:
   - name: Default
     uniqueID: 0

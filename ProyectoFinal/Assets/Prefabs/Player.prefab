@@ -69,13 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c322818e14fb4e74eb1ce2832d100a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 5
-  _runSpeed: 8
-  _gravity: 9.8
-  _HorizontalSensitibity: 2
-  _VerticalSensitibity: 2
-  _limitHeadUp: 60
-  _limitHeadDown: 60
+  _playerData: {fileID: 11400000, guid: 3757b98f70081b347acda90a844efcc2, type: 2}
 --- !u!120 &68555606
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -210,6 +204,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb680e250ed77c4897af87d818ba111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menu: {fileID: 0}
+  onClickAimButtonEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HudController, Assembly-CSharp
+        m_MethodName: OnAimEvent
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onUnClickAimButtonEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HudController, Assembly-CSharp
+        m_MethodName: OnAimEvent
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPressKeyHudEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HudController, Assembly-CSharp
+        m_MethodName: OnActivateHudEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1601549517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0683cd0badd06e440befc9a51807fb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene:
-    m_Handle: 0
 --- !u!1 &3239058168535543934
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +273,7 @@ GameObject:
   - component: {fileID: 3239058168535543873}
   - component: {fileID: 3239058168535543875}
   - component: {fileID: 3239058168535543872}
+  - component: {fileID: 398277352}
   m_Layer: 0
   m_Name: Head Camera
   m_TagString: Untagged
@@ -307,6 +346,66 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3239058168535543934}
   m_Enabled: 1
+--- !u!114 &398277352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239058168535543934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 3239058168535543873}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 1
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &344500032841163050
 PrefabInstance:
   m_ObjectHideFlags: 0
