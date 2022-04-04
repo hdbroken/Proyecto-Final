@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 09a0e968685f45b4d953cff5a3650527
   - enabled: 1
-    path: Assets/Scenes/SandBox Martin.unity
+    path: Assets/Scenes/Daniel.unity
     guid: 4a5ef7ffd95f20c429e43ad9ccd7c71a
   m_configObjects: {}
