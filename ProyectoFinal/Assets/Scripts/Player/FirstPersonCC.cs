@@ -28,8 +28,7 @@ public class FirstPersonCC : MonoBehaviour
         _playerAnimator = GetComponentInChildren<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
-        _fire = GetComponent<Shoot>();
-        Debug.Log(_playerData.limitHeadDown);
+        _fire = GetComponent<Shoot>();        
     }
     private void OnDestroy()
     {
@@ -137,8 +136,6 @@ public class FirstPersonCC : MonoBehaviour
 
         while (angleDown < -_playerData.limitHeadDown)
         {
-            Debug.Log(angleDown);
-            Debug.Log(lookDownAngle);
             lookDownAngle = Quaternion.Euler(angleDown, 0, 0);
             Look(lookDownAngle, samelook);
             yield return new WaitForSeconds(0.025f);
@@ -148,7 +145,7 @@ public class FirstPersonCC : MonoBehaviour
     public void LookOnDeath()
     {
         _isDead = true;
-        int time = 2;
+        //int time = 2;
         //ShakeHead(time);
         StartCoroutine(SmoothLook());
     }
@@ -159,7 +156,7 @@ public class FirstPersonCC : MonoBehaviour
         _playerAnimator.enabled = false;
     }
 
-    IEnumerator MoveCamera(float time)
+    /*IEnumerator MoveCamera(float time)
     {
         float timeLaps = 0.5f;
         float timer = 0;
@@ -183,5 +180,5 @@ public class FirstPersonCC : MonoBehaviour
     public void ShakeHead(float time)
     {
         StartCoroutine(MoveCamera(time));
-    }
+    }*/
 }

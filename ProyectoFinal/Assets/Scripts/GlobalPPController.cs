@@ -14,8 +14,8 @@ public class GlobalPPController : MonoBehaviour
     [SerializeField]
     private float _timer=0;
 
-    [SerializeField]
-    private float timeToFadeOut = 0;
+    //[SerializeField]
+    //private float timeToFadeOut = 0;
 
     private void Awake()
     {

@@ -8,8 +8,9 @@ TagManager:
   - Enemy
   - HUD
   - Menu
-  - Winning Zone 
+  - Winning Zone
   - Face
+  - Turret Shoot Point
   layers:
   - Default
   - TransparentFX

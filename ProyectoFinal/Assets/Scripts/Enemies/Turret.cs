@@ -4,26 +4,51 @@ using UnityEngine;
 
 public class Turret : EnemyBase
 {
-    private GameObject _target;   
+    [SerializeField]
+    private GameObject _firePoint;
 
+    [SerializeField]
+    private GameObject _laserBullet;
 
+    [SerializeField]
+    private float maxIntensityChargeWeapon;
+    
+    private GameObject _target;  
+    
+    private Light _chargeWeapon;
+
+    private bool _isActivated = true;
+    
+    public bool isActivated
+    {
+        get { return _isActivated; }
+        set { _isActivated = value; }
+    }
+    
     private void Awake()
     {
-        _target = GameObject.FindGameObjectWithTag("Player");            
+        _target = GameObject.FindGameObjectWithTag("Player");
+        _chargeWeapon = GetComponentInChildren<Light>();        
     }
-    void Start()
-    {
-        
-    }
-
+ 
     // Update is called once per frame
     void Update()
     {
-        if(IsInLOS(_target))
+        if (isActivated)
         {
-            LookPlayer();
-            if (IsInShootingRange(_target))
-            Shoot();
+            if (IsInLOS(_target))
+            {
+                ChargeWeapon();
+                LookPlayer();
+                if (IsInShootingRange(_target))
+                {
+                    Shoot();
+                }
+            }
+            else if (!IsInLOS(_target))
+            {
+                DisChargeWeapon();
+            }
         }
     }
 
@@ -35,7 +60,24 @@ public class Turret : EnemyBase
 
     private void Shoot()
     {
+       GameObject bullet = Instantiate(_laserBullet, _firePoint.transform.position,transform.rotation);
+       LaserBullet laser = bullet.GetComponentInChildren<LaserBullet>();
+       laser.DirectionToShoot( (_target.transform.position - transform.position).normalized);        
+    }
 
-        Debug.Log("Estas Muerto");
+    private void ChargeWeapon()
+    {
+        if (_chargeWeapon.intensity <= maxIntensityChargeWeapon)
+        {
+            _chargeWeapon.intensity += 10 * Time.deltaTime;
+        }
+    }
+
+    private void DisChargeWeapon()
+    {
+        if (_chargeWeapon.intensity >= 0)
+        {
+            _chargeWeapon.intensity -= 10 * Time.deltaTime;
+        }
     }
 }

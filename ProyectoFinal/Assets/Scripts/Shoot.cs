@@ -23,7 +23,7 @@ public class Shoot : MonoBehaviour
         {
             laser.SetPosition(0, (player.transform.position + new Vector3(0, -1, 0.1f)));
             laser.SetPosition(1, player.transform.forward * 1000);
-            
+
             RaycastHit hit;
 
             if (Physics.Raycast(player.transform.position, player.transform.forward, out hit))
@@ -42,12 +42,23 @@ public class Shoot : MonoBehaviour
                         {
                             script.shoot();
                         }
-                    if (hit.collider)
-                    {
-                        laser.SetPosition(1, hit.point);
+                        if (hit.collider)
+                        {
+                            laser.SetPosition(1, hit.point);
+                        }
+                        timer = 0;
                     }
-                    timer = 0;
-                    }
+                }
+                if (gObj.CompareTag("Enemy"))
+                {
+                    TurretCollision turretCollision = gObj.GetComponent<TurretCollision>();
+                    Turret turret = gObj.GetComponent<Turret>();
+                    EnemyCollision enemyCollision = gObj.GetComponent<EnemyCollision>();
+
+                    if ( (turretCollision != null) && (turret.isActivated ) )
+                        turretCollision.Desactivate();
+                    else if ( (enemyCollision != null) )
+                        enemyCollision.Desactivate();
                 }
             }
         }

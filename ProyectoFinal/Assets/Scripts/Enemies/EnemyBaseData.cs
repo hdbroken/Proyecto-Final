@@ -7,16 +7,16 @@ public class EnemyBaseData : ScriptableObject
 {
     
     [SerializeField]
-    private float _viewDistance = 7;
+    private float _viewDistance = 10;
 
     [SerializeField]
     private float _viewAngle = 90;
 
     [SerializeField]
-    private float _shootDistance = 5;
+    private float _shootDistance = 7;
 
     [SerializeField]
-    private float _speedToRotation = 10;
+    private float _speedToRotation = 15;
 
     public float viewDistance
     {

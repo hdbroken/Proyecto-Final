@@ -7,9 +7,15 @@ using UnityEngine.AI;
 public class Enemy : EnemyBase
 {
     [SerializeField]
+    private GameObject _firePoint;
+
+    [SerializeField]
+    private GameObject _laserBullet;
+
+    [SerializeField]
     private WaypointsManager _waypointList;
 
-    private GameObject _target;    
+    private GameObject _target;
     private NavMeshAgent _navigation;
     private int _index = 0;
     private Animator _enemyAnimator;
@@ -17,10 +23,10 @@ public class Enemy : EnemyBase
     private void Awake()
     {
         _navigation = GetComponent<NavMeshAgent>();
-        _target = GameObject.FindGameObjectWithTag("Player");        
+        _target = GameObject.FindGameObjectWithTag("Player");
         _enemyAnimator = GetComponentInChildren<Animator>();
     }
-    
+
     void Start()
     {
         Move();
@@ -62,29 +68,29 @@ public class Enemy : EnemyBase
         else if (IsInLOS(_target))
         {
             _navigation.isStopped = true;
-            if(_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
+            if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
             LookPlayer();
             if (IsInShootingRange(_target))
             {
-                ShootPlayer();
+                Shoot();
             }
         }
     }
 
-    private void ShootPlayer()
+    private void Shoot()
     {
-        Debug.Log("Estas Muerto");
+        GameObject bullet = Instantiate(_laserBullet, _firePoint.transform.position, transform.rotation);
+        LaserBullet laser = bullet.GetComponentInChildren<LaserBullet>();
+        laser.DirectionToShoot((_target.transform.position - _firePoint.transform.position).normalized);
     }
 
     private void Move()
     {
-
         _navigation.SetDestination(_waypointList.waypoint[_index].transform.position);
     }
 
     private void LookPlayer()
     {
-
         Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _fov.speedToRotation);
     }
