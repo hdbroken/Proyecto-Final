@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb680e250ed77c4897af87d818ba111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menu: {fileID: 0}
+  _menu: {fileID: 826335254946036210, guid: 60a5d74fc99311142b90ea201da93f92, type: 3}
   onClickAimButtonEvent:
     m_PersistentCalls:
       m_Calls:

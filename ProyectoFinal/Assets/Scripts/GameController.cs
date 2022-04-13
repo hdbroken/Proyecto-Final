@@ -16,9 +16,6 @@ public class GameController : MonoBehaviour
     private GameObject _player;
 
     [SerializeField]
-    private Death _fadeOutDie;
-
-    [SerializeField]
     private GlobalPPController _globalVolume;
     private Scene _scene;
 
@@ -63,8 +60,7 @@ public class GameController : MonoBehaviour
     }
     private void OnPlayerDieEvent()
     {
-        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();
-        //_fadeOutDie.BlackOutOn();
+        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();        
         moveController.LookOnDeath();
         moveController.StopMove();        
         _globalVolume.Death();

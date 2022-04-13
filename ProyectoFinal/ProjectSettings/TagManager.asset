@@ -11,6 +11,8 @@ TagManager:
   - Winning Zone
   - Face
   - Turret Shoot Point
+  - LaserBullet
+  - Water
   layers:
   - Default
   - TransparentFX

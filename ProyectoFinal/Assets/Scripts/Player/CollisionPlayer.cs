@@ -18,11 +18,17 @@ public class CollisionPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("LaserBullet") || other.gameObject.CompareTag("Water"))
+        {
+            GameManager.instance.reintentos++;
+            EventManager.onPlayerDie?.Invoke();
+        }
+
         if (other.gameObject.CompareTag("Winning Zone"))
         {
             EventManager.onPauseGame?.Invoke(true);
             EventManager.onWinLevel?.Invoke();
-        }
+        }        
     }
 
 }

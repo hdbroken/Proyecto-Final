@@ -32,6 +32,6 @@ public class LaserBullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Enemy"))
-            Destroy(transform.parent.gameObject);
+           Destroy(transform.parent.gameObject);
     }
 }
