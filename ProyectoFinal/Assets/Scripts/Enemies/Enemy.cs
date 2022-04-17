@@ -7,6 +7,9 @@ using UnityEngine.AI;
 public class Enemy : EnemyBase
 {
     [SerializeField]
+    private Vector3 _offsetSightEnemy = new Vector3(0f, -1.2f, 0f);
+
+    [SerializeField]
     private GameObject _firePoint;
 
     [SerializeField]
@@ -81,7 +84,7 @@ public class Enemy : EnemyBase
     {
         GameObject bullet = Instantiate(_laserBullet, _firePoint.transform.position, transform.rotation);
         LaserBullet laser = bullet.GetComponentInChildren<LaserBullet>();
-        laser.DirectionToShoot((_target.transform.position - _firePoint.transform.position).normalized);
+        laser.DirectionToShoot((_target.transform.position - (_firePoint.transform.position + _offsetSightEnemy)).normalized);
     }
 
     private void Move()

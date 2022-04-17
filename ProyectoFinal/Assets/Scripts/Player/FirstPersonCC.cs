@@ -25,10 +25,10 @@ public class FirstPersonCC : MonoBehaviour
     private void Awake()
     {
         EventManager.onPauseGame += OnPausedGameEvent;
-        _playerAnimator = GetComponentInChildren<Animator>();
+        _playerAnimator = GetComponent<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
-        _fire = GetComponent<Shoot>();        
+        _fire = GetComponent<Shoot>();
     }
     private void OnDestroy()
     {
@@ -38,8 +38,6 @@ public class FirstPersonCC : MonoBehaviour
     void Update()
     {
         TouchTheFloor();
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //    ShakeHead(10);
 
         Movement();
         _fire.Shooting(_headCamera);
@@ -75,7 +73,7 @@ public class FirstPersonCC : MonoBehaviour
     }
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
-    {
+    {    
         _hMouse += Input.GetAxis("Mouse X") * _playerData.horizontalSensitivity;
         _vMouse -= Input.GetAxis("Mouse Y") * _playerData.verticalSensitivity;
         _vMouse = Mathf.Clamp(_vMouse, _playerData.limitHeadDown, _playerData.limitHeadUp);
@@ -145,8 +143,7 @@ public class FirstPersonCC : MonoBehaviour
     public void LookOnDeath()
     {
         _isDead = true;
-        //int time = 2;
-        //ShakeHead(time);
+   
         StartCoroutine(SmoothLook());
     }
 

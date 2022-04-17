@@ -8,8 +8,21 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected EnemyBaseData _fov;
 
+    private GameObject _player;
+
+    private Vector3 _offsetSight = new Vector3(0f, -1.2f, 0f);
+
     private void OnDrawGizmos()
     {
+
+        if (_player != null)
+        {
+            Vector3 origen = (_player.transform.position - (transform.position + _offsetSight)).normalized;
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(transform.position, origen * _fov.viewDistance);
+        }
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _fov.viewDistance);
 
@@ -29,7 +42,8 @@ public class EnemyBase : MonoBehaviour
     
     public bool IsInShootingRange(GameObject target)
     {
-        float distanceToPlayer = Vector3.Distance(target.transform.position, transform.position);
+        _player = target;
+        float distanceToPlayer = Vector3.Distance(target.transform.position, (transform.position + _offsetSight));
         if (IsInLOS(target) && (distanceToPlayer <= _fov.shootDistance))
         {
             return true;
@@ -38,14 +52,16 @@ public class EnemyBase : MonoBehaviour
     }
     public bool IsInLOS(GameObject target)
     {
+        _player = target;
         Vector3 targetPosition = new Vector3();
         Vector3 directionToTarget = new Vector3();
 
         targetPosition = target.transform.position;
-        float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
-        
+        float distanceToTarget = Vector3.Distance(target.transform.position, (transform.position + _offsetSight));
+        Debug.Log(distanceToTarget);        
 
-        directionToTarget = (target.transform.position - transform.position).normalized;
+        directionToTarget = (target.transform.position - (transform.position + _offsetSight)).normalized;
+        
 
         if (distanceToTarget <= _fov.viewDistance)
         {
@@ -65,6 +81,7 @@ public class EnemyBase : MonoBehaviour
 
     private bool ICanSeePlayer(GameObject target, Vector3 directionToPlayer)
     {
+        _player = target;
         RaycastHit hit;
         bool esta = Physics.Raycast(transform.position, directionToPlayer, out hit, _fov.viewDistance);
         if (esta)

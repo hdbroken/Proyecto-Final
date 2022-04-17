@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    [SerializeField]
+    private Transform _shootPoint;
+
+    [SerializeField]
+    private float _distance = 1000;
+
     private LineRenderer laser;
-    private float timer;
+    private float timer;    
 
     private void Awake()
     {
-        laser = GetComponent<LineRenderer>();
-    }
-
-    private void Update()
-    {
-        //timer += Time.deltaTime;
-    }
+        laser = GetComponent<LineRenderer>();    
+    } 
 
     public void Shooting(Camera player)
     {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
         {
-            laser.SetPosition(0, (player.transform.position + new Vector3(0, -1, 0.1f)));
-            laser.SetPosition(1, player.transform.forward * 1000);
-
+            laser.SetPosition(0, (_shootPoint.position /*+ new Vector3(0, -1, 0.1f)*/));
+            laser.SetPosition(1, _shootPoint.forward * _distance);
+            
             RaycastHit hit;
 
-            if (Physics.Raycast(player.transform.position, player.transform.forward, out hit))
+            if (Physics.Raycast(_shootPoint.position, _shootPoint.forward, out hit))
             {
                 var gObj = hit.collider.gameObject;
                 if (gObj.CompareTag("Face"))
@@ -64,8 +65,8 @@ public class Shoot : MonoBehaviour
         }
         else
         {
-            laser.SetPosition(0, player.transform.position);
-            laser.SetPosition(1, player.transform.position);
+            laser.SetPosition(0, _shootPoint.position);
+            laser.SetPosition(1, _shootPoint.position);
         }
 
     }

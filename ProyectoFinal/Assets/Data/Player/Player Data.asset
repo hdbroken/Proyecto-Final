@@ -15,7 +15,7 @@ MonoBehaviour:
   _gravity: 9.8
   _walkSpeed: 5
   _runSpeed: 10
-  _horizontalSensitivity: 4
-  _verticalSensitivity: 4
+  _horizontalSensitivity: 2
+  _verticalSensitivity: 2
   _limitHeadUp: 60
   _limitHeadDown: 60

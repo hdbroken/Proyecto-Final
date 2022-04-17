@@ -5,6 +5,9 @@ using UnityEngine;
 public class Turret : EnemyBase
 {
     [SerializeField]
+    private Vector3 _offsetSightTurret = new Vector3(0f, -1.2f, 0f);
+
+    [SerializeField]
     private GameObject _firePoint;
 
     [SerializeField]
@@ -23,8 +26,8 @@ public class Turret : EnemyBase
     {
         get { return _isActivated; }
         set { _isActivated = value; }
-    }
-    
+    }    
+
     private void Awake()
     {
         _target = GameObject.FindGameObjectWithTag("Player");
@@ -54,7 +57,7 @@ public class Turret : EnemyBase
 
     private void LookPlayer()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - transform.position);
+        Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - (transform.position + _offsetSightTurret));
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _fov.speedToRotation);
     }
 
@@ -62,7 +65,7 @@ public class Turret : EnemyBase
     {
        GameObject bullet = Instantiate(_laserBullet, _firePoint.transform.position,transform.rotation);
        LaserBullet laser = bullet.GetComponentInChildren<LaserBullet>();
-       laser.DirectionToShoot( (_target.transform.position - transform.position).normalized);        
+       laser.DirectionToShoot( (_target.transform.position - (transform.position + _offsetSightTurret)).normalized);        
     }
 
     private void ChargeWeapon()

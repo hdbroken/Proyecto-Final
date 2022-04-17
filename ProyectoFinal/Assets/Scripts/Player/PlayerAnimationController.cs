@@ -8,7 +8,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponentInChildren<Animator>();
+        _animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
