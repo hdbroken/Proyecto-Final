@@ -57,11 +57,9 @@ public class EnemyBase : MonoBehaviour
         Vector3 directionToTarget = new Vector3();
 
         targetPosition = target.transform.position;
-        float distanceToTarget = Vector3.Distance(target.transform.position, (transform.position + _offsetSight));
-        Debug.Log(distanceToTarget);        
+        float distanceToTarget = Vector3.Distance(target.transform.position, (transform.position + _offsetSight));        
 
-        directionToTarget = (target.transform.position - (transform.position + _offsetSight)).normalized;
-        
+        directionToTarget = (target.transform.position - (transform.position + _offsetSight)).normalized;        
 
         if (distanceToTarget <= _fov.viewDistance)
         {

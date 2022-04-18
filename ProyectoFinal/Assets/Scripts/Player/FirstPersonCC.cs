@@ -8,8 +8,8 @@ public class FirstPersonCC : MonoBehaviour
     [SerializeField]
     private PlayerData _playerData;
 
-    private float _hMouse;
-    private float _vMouse;
+    private float _hMouse = 0;
+    private float _vMouse = 0;
     private CharacterController _ccPlayer;
     private Camera _headCamera;
 
@@ -28,19 +28,18 @@ public class FirstPersonCC : MonoBehaviour
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
         _fire = GetComponent<Shoot>();
+        _hMouse = transform.rotation.eulerAngles.y;
     }
     private void OnDestroy()
     {
         EventManager.onPauseGame -= OnPausedGameEvent;
-    }
+    }  
 
     void Update()
     {
         TouchTheFloor();
-
         Movement();
         _fire.Shooting(_headCamera);
-
     }
 
     private void Movement()
@@ -72,10 +71,12 @@ public class FirstPersonCC : MonoBehaviour
     }
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
-    {    
+    {
         _hMouse += Input.GetAxis("Mouse X") * _playerData.horizontalSensitivity;
         _vMouse -= Input.GetAxis("Mouse Y") * _playerData.verticalSensitivity;
+        
         _vMouse = Mathf.Clamp(_vMouse, _playerData.limitHeadDown, _playerData.limitHeadUp);
+
         vAngle = Quaternion.Euler(_vMouse, 0, 0);
         hAngle = Quaternion.Euler(0, _hMouse, 0);
     }
@@ -137,10 +138,10 @@ public class FirstPersonCC : MonoBehaviour
             Look(lookDownAngle, samelook);
             yield return new WaitForSeconds(0.025f);
             angleDown += 0.5f;
-        }        
+        }
     }
     public void LookOnDeath()
-    {   
+    {
         StartCoroutine(SmoothLook());
     }
 
