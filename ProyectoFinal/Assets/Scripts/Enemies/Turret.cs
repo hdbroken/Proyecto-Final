@@ -37,7 +37,7 @@ public class Turret : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if (isActivated)
+        if (isActivated && GameManager.instance.playerIsAlive)
         {
             if (IsInLOS(_target))
             {

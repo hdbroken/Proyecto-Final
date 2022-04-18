@@ -57,10 +57,12 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(_scene.name);
+        GameManager.instance.playerIsAlive = true;
     }
     private void OnPlayerDieEvent()
-    {
-        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();        
+    {        
+        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();
+        GameManager.instance.playerIsAlive = false;
         moveController.LookOnDeath();
         moveController.StopMove();        
         _globalVolume.Death();

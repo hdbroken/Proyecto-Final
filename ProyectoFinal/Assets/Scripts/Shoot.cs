@@ -8,7 +8,7 @@ public class Shoot : MonoBehaviour
     private Transform _shootPoint;
 
     [SerializeField]
-    private float _distance = 1000;
+    private float _distance = 10000;
 
     private LineRenderer laser;
     private float timer;    

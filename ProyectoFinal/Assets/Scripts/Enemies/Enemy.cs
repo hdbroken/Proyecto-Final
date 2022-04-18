@@ -42,40 +42,43 @@ public class Enemy : EnemyBase
 
     private void MoveToNextPoint()
     {
-        if (!IsInLOS(_target))
+        if (GameManager.instance.playerIsAlive)
         {
-            _navigation.isStopped = false;
-            if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", true);
-            if (_index < _waypointList.waypoint.Count)
+            if (!IsInLOS(_target))
             {
-                if (_navigation.remainingDistance <= 0)
+                _navigation.isStopped = false;
+                if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", true);
+                if (_index < _waypointList.waypoint.Count)
                 {
-                    if ((_index + 1 < _waypointList.waypoint.Count))
+                    if (_navigation.remainingDistance <= 0)
                     {
-                        _index++;
-                        Move();
-                    }
-                    else
-                    {
-                        _index = 0;
-                        Move();
+                        if ((_index + 1 < _waypointList.waypoint.Count))
+                        {
+                            _index++;
+                            Move();
+                        }
+                        else
+                        {
+                            _index = 0;
+                            Move();
+                        }
                     }
                 }
+                else
+                {
+                    _index = 0;
+                    Move();
+                }
             }
-            else
+            else if (IsInLOS(_target))
             {
-                _index = 0;
-                Move();
-            }
-        }
-        else if (IsInLOS(_target))
-        {
-            _navigation.isStopped = true;
-            if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
-            LookPlayer();
-            if (IsInShootingRange(_target))
-            {
-                Shoot();
+                _navigation.isStopped = true;
+                if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
+                LookPlayer();
+                if (IsInShootingRange(_target))
+                {
+                    Shoot();
+                }
             }
         }
     }

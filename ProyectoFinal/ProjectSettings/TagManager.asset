@@ -14,6 +14,10 @@ TagManager:
   - LaserBullet
   - Water
   - Player Shoot Point
+  - ENEMY
+  - Winning Zone 1
+  - Winning Zone 2
+  - Winning Zone 3
   layers:
   - Default
   - TransparentFX

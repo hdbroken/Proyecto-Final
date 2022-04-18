@@ -7,15 +7,7 @@ public class TurretCollision : MonoBehaviour
     [SerializeField]
     private float _timeDesactivated = 5f;
 
-    private Turret _turret;
-
-    private float _timer = 0;
-
-    public float timer
-    {
-        get { return _timer; }
-        set { _timer = value; }
-    }
+    private Turret _turret;    
 
     public float timeDesactivated
     {
@@ -26,12 +18,7 @@ public class TurretCollision : MonoBehaviour
     private void Awake()
     {
         _turret = GetComponentInChildren<Turret>();
-    }
-
-    private void Update()
-    {
-        _timer += Time.deltaTime;
-    }
+    }    
 
     IEnumerator TimeDesactivated()
     {

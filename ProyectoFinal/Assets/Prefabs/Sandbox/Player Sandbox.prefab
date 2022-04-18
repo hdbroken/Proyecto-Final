@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 7024946622639916626}
+  _distance: 10000
 --- !u!114 &3506384830954401889
 MonoBehaviour:
   m_ObjectHideFlags: 0

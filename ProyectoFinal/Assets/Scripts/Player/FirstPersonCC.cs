@@ -14,8 +14,7 @@ public class FirstPersonCC : MonoBehaviour
     private Camera _headCamera;
 
     private Shoot _fire;
-    private Animator _playerAnimator;
-    private bool _isDead = false;
+    private Animator _playerAnimator;    
 
     private void OnPausedGameEvent(bool obj)
     {
@@ -62,7 +61,7 @@ public class FirstPersonCC : MonoBehaviour
 
     private void MoveHead()
     {
-        if (!_isDead)
+        if (GameManager.instance.playerIsAlive)
         {
             Quaternion vAngle = new Quaternion();
             Quaternion hAngle = new Quaternion();
@@ -138,12 +137,10 @@ public class FirstPersonCC : MonoBehaviour
             Look(lookDownAngle, samelook);
             yield return new WaitForSeconds(0.025f);
             angleDown += 0.5f;
-        }
+        }        
     }
     public void LookOnDeath()
-    {
-        _isDead = true;
-   
+    {   
         StartCoroutine(SmoothLook());
     }
 
