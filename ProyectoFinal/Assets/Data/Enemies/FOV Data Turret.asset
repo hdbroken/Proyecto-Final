@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91fa3a9db892f7b4995350afa8acb1b7, type: 3}
   m_Name: FOV Data Turret
   m_EditorClassIdentifier: 
-  _viewDistance: 32.91
+  _viewDistance: 15
   _viewAngle: 360
   _shootDistance: 7
-  _speedToRotation: 15
+  _speedToRotation: 20
