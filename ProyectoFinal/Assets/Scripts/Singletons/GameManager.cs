@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int reintentos = 0;
-    public int LastSavePoint;
+    public int lastSavePoint = 0;
+    public int tries = 1;    
     public bool playerIsAlive = true;
 
     private void Awake()

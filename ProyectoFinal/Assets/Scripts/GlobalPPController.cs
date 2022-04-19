@@ -9,9 +9,7 @@ public class GlobalPPController : MonoBehaviour
     private DepthOfField _dof;
     private ColorGrading _colorGrading;
     private Grain _grain;
-    private Vignette _vignette;
-
-    [SerializeField]
+    private Vignette _vignette;   
     private float _timer=0;
 
     //[SerializeField]
@@ -48,5 +46,13 @@ public class GlobalPPController : MonoBehaviour
         StartCoroutine(DOFAndVignette());
                
         _timer = 0;
+    }
+
+    public void Alive()
+    {
+        _colorGrading.active = false;
+        _grain.active = false;
+        _dof.active = false;
+        _vignette.active = false;
     }
 }

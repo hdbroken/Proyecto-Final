@@ -9,12 +9,25 @@ public class FirstPersonCC : MonoBehaviour
     private PlayerData _playerData;
 
     private float _hMouse = 0;
+
+    public float hMouse
+    {
+        get { return _hMouse; }
+        set { _hMouse = value; }
+    }
+
     private float _vMouse = 0;
+    public float vMouse
+    {
+        get { return _vMouse; }
+        set { _vMouse = value; }
+    }
+
     private CharacterController _ccPlayer;
     private Camera _headCamera;
 
     private Shoot _fire;
-    private Animator _playerAnimator;    
+    private Animator _playerAnimator;
 
     private void OnPausedGameEvent(bool obj)
     {
@@ -24,22 +37,27 @@ public class FirstPersonCC : MonoBehaviour
     private void Awake()
     {
         EventManager.onPauseGame += OnPausedGameEvent;
+
         _playerAnimator = GetComponent<Animator>();
         _ccPlayer = GetComponent<CharacterController>();
         _headCamera = GetComponentInChildren<Camera>();
         _fire = GetComponent<Shoot>();
+
         _hMouse = transform.rotation.eulerAngles.y;
     }
     private void OnDestroy()
     {
         EventManager.onPauseGame -= OnPausedGameEvent;
-    }  
+    }
 
     void Update()
     {
-        TouchTheFloor();
-        Movement();
-        _fire.Shooting(_headCamera);
+        if (GameManager.instance.playerIsAlive)
+        {
+            TouchTheFloor();
+            Movement();
+            _fire.Shooting(_headCamera);
+        }
     }
 
     private void Movement()
@@ -60,21 +78,18 @@ public class FirstPersonCC : MonoBehaviour
 
     private void MoveHead()
     {
-        if (GameManager.instance.playerIsAlive)
-        {
-            Quaternion vAngle = new Quaternion();
-            Quaternion hAngle = new Quaternion();
+        Quaternion vAngle = new Quaternion();
+        Quaternion hAngle = new Quaternion();
 
-            DirectionToLook(ref vAngle, ref hAngle);
-            Look(vAngle, hAngle);
-        }
+        DirectionToLook(ref vAngle, ref hAngle);
+        Look(vAngle, hAngle);
     }
 
     private void DirectionToLook(ref Quaternion vAngle, ref Quaternion hAngle)
     {
         _hMouse += Input.GetAxis("Mouse X") * _playerData.horizontalSensitivity;
         _vMouse -= Input.GetAxis("Mouse Y") * _playerData.verticalSensitivity;
-        
+
         _vMouse = Mathf.Clamp(_vMouse, _playerData.limitHeadDown, _playerData.limitHeadUp);
 
         vAngle = Quaternion.Euler(_vMouse, 0, 0);
@@ -145,10 +160,9 @@ public class FirstPersonCC : MonoBehaviour
         StartCoroutine(SmoothLook());
     }
 
-    public void StopMove()
-    {
-        this.enabled = false;
-        _playerAnimator.enabled = false;
+    public void StopMove(bool move)
+    {        
+        _playerAnimator.enabled = !move;
     }
 
     /*IEnumerator MoveCamera(float time)

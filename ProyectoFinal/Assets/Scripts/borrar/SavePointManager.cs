@@ -19,6 +19,6 @@ public class SavePointManager : MonoBehaviour
     public void FindSavePoint(string name) 
     {
         int indexSavePoint = Savepoints.FindIndex(item => item.name == name);
-        GameManager.instance.LastSavePoint = indexSavePoint;
+        GameManager.instance.lastSavePoint = indexSavePoint;
     }
 }

@@ -32,8 +32,7 @@ public class PatrolBehavior : MonoBehaviour
     }*/
 
     private void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("bb");
+    {        
         contador++;
         proceed = true;
     }

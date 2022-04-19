@@ -10,8 +10,7 @@ public class CollisionPlayer : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Enemy"))
-        {
-            GameManager.instance.reintentos++;            
+        {         
             EventManager.onPlayerDie?.Invoke();            
         }       
     }
@@ -19,8 +18,7 @@ public class CollisionPlayer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("LaserBullet") || other.gameObject.CompareTag("Water"))
-        {
-            GameManager.instance.reintentos++;
+        {            
             EventManager.onPlayerDie?.Invoke();
         }
 

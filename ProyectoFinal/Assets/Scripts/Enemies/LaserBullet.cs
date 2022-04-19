@@ -16,7 +16,14 @@ public class LaserBullet : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (GameManager.instance.playerIsAlive)
+        {
+            Move();
+        }
+        else
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
 
     public void DirectionToShoot(Vector3 direction)

@@ -17,7 +17,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GlobalPPController _globalVolume;
+
     private Scene _scene;
+    private Vector3 _initialPosition;
+    private float _initialRotationDegrees;
+    private FirstPersonCC _moveController;    
 
     private void OnEnable()
     {
@@ -34,8 +38,12 @@ public class GameController : MonoBehaviour
     }
 
     private void Awake()
-    {
-        _scene = SceneManager.GetActiveScene();        
+    {        
+        _moveController = _player.GetComponent<FirstPersonCC>();
+        _scene = SceneManager.GetActiveScene();
+        
+        _initialPosition = _player.transform.position;
+        _initialRotationDegrees = _player.transform.rotation.eulerAngles.y;        
     }
 
     private void OnGamePauseEvent(bool isPausedGame)
@@ -59,13 +67,35 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(_scene.name);
         GameManager.instance.playerIsAlive = true;
     }
-    private void OnPlayerDieEvent()
+
+    IEnumerator ToDie()
     {        
-        FirstPersonCC moveController = _player.GetComponent<FirstPersonCC>();
-        GameManager.instance.playerIsAlive = false;
-        moveController.LookOnDeath();
-        moveController.StopMove();        
+        _moveController.StopMove(true);
+        _moveController.LookOnDeath();        
+
         _globalVolume.Death();
-        StartCoroutine(ReloadScene());        
+
+        yield return new WaitForSeconds(5f);
+
+        InitialPosition();
+
+        _globalVolume.Alive();
+        GameManager.instance.playerIsAlive = true;
+        _moveController.StopMove(false);        
+    }
+    private void OnPlayerDieEvent()
+    {
+        GameManager.instance.tries += 1;
+        GameManager.instance.playerIsAlive = false;
+        
+        StartCoroutine(ToDie());
+        //StartCoroutine(ReloadScene());        
+    }
+
+    public void InitialPosition()
+    {
+        _player.transform.position = _initialPosition;
+        _moveController.hMouse = _initialRotationDegrees;
+        _moveController.vMouse = 0;
     }
 }

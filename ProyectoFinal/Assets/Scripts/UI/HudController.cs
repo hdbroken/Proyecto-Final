@@ -13,11 +13,14 @@ public class HudController : MonoBehaviour
     private GameObject _sightHud;
 
     [SerializeField]
-    private GameObject _weaponHud;
+    private GameObject _triesHud;
+
+    private TextMeshProUGUI _displayTries;
 
     private void Awake()
     {
         EventManager.onWinLevel += OnWinLevelEvent;
+        _displayTries = _triesHud.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void OnDestroy()
@@ -32,7 +35,8 @@ public class HudController : MonoBehaviour
 
     public void OnActivateHudEvent()
     {
-        _weaponHud.SetActive(!_weaponHud.activeSelf);
+        _triesHud.SetActive(!_triesHud.activeSelf);
+        _displayTries.text = ("Tries: " + GameManager.instance.tries);
     }
 
     private void OnWinLevelEvent()

@@ -46,3 +46,4 @@ MonoBehaviour:
   _menu: {fileID: 0}
   _hud: {fileID: 0}
   _player: {fileID: 0}
+  _globalVolume: {fileID: 0}
