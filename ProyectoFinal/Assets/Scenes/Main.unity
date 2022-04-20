@@ -562,9 +562,48 @@ PrefabInstance:
       propertyPath: _animationStartGame
       value: 
       objectReference: {fileID: 720459814}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5894356123262531366}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905362281662323576, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7252138605189584392, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
       propertyPath: m_Name
       value: Initial UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+--- !u!114 &5894356123262531366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2662728019687277012, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
+  m_PrefabInstance: {fileID: 5894356123262531365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1824fd3a34c4498479cf212dcf1a7465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
