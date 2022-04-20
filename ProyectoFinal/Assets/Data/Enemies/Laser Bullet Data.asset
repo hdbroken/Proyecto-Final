@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f27d354d9a7113488ffd0d8519f613b, type: 3}
   m_Name: Laser Bullet Data
   m_EditorClassIdentifier: 
-  _speed: 30
+  _speed: 60

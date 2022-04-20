@@ -15,5 +15,5 @@ MonoBehaviour:
   _viewDistance: 15
   _viewAngle: 360
   _shootDistance: 10
-  _timeBetweenShoots: 1
-  _speedToRotation: 20
+  _timeBetweenShoots: 0.3
+  _speedToRotation: 30
