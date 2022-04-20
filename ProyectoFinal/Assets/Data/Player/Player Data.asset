@@ -18,4 +18,4 @@ MonoBehaviour:
   _horizontalSensitivity: 2
   _verticalSensitivity: 2
   _limitHeadUp: 60
-  _limitHeadDown: 60
+  _limitHeadDown: 30
