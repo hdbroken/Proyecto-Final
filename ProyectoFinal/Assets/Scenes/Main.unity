@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8d7e6f0fd6359be4e9976345fe81d7b6, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.19984591, g: 0.20672283, b: 0.16834942, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -217,10 +217,6 @@ PrefabInstance:
     - target: {fileID: 8048862262768795152, guid: 440d804852acb6249a5ce230b598b77b, type: 3}
       propertyPath: m_Name
       value: Start Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048862262768795152, guid: 440d804852acb6249a5ce230b598b77b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440d804852acb6249a5ce230b598b77b, type: 3}
@@ -478,22 +474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 695640712519678850, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 695640712519678850, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 695640712519678850, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 695640712519678850, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 774281287299812391, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -578,26 +558,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1520342275621861579, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1520342275621861579, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1520342275621861579, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1520342275621861579, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2662728019687277012, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: _nameInitialScene
-      value: SandBox Martin
-      objectReference: {fileID: 0}
     - target: {fileID: 2662728019687277012, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
       propertyPath: _animationStartGame
       value: 
@@ -605,38 +565,6 @@ PrefabInstance:
     - target: {fileID: 7252138605189584392, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
       propertyPath: m_Name
       value: Initial UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288628420625632348, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288628420625632348, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288628420625632348, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288628420625632348, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8543204911524145008, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8543204911524145008, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8543204911524145008, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8543204911524145008, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16afd011539af3c45bbcffb0fbd11a41, type: 3}

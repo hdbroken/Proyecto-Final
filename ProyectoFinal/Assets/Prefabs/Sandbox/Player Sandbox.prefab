@@ -2938,7 +2938,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451554373946302474}
-  - component: {fileID: 3569403891939162736}
   m_Layer: 0
   m_Name: ybot
   m_TagString: Untagged
@@ -2964,25 +2963,6 @@ Transform:
   m_Father: {fileID: 2043046893005472897}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3569403891939162736
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7792051531676891824}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: 0d82b2a52e96b0f4fa71113a12f81ece, type: 3}
-  m_Controller: {fileID: 9100000, guid: c5cab0b332553ff459b454e73777ebaf, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7966281416836558484
 GameObject:
   m_ObjectHideFlags: 0
