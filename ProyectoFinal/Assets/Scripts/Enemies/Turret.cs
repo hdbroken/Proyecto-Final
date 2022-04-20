@@ -26,7 +26,9 @@ public class Turret : EnemyBase
     {
         get { return _isActivated; }
         set { _isActivated = value; }
-    }    
+    }
+
+    private bool _canShoot = true;
 
     private void Awake()
     {
@@ -43,9 +45,11 @@ public class Turret : EnemyBase
             {
                 ChargeWeapon();
                 LookPlayer();
-                if (IsInShootingRange(_target))
+                if (IsInShootingRange(_target) && (_canShoot)) 
                 {
+                    _canShoot = false;
                     Shoot();
+                    StartCoroutine(TimeToNextShoot());
                 }
             }
             else if (!IsInLOS(_target))
@@ -55,6 +59,12 @@ public class Turret : EnemyBase
         }
     }
 
+    IEnumerator TimeToNextShoot()
+    {
+        yield return new WaitForSeconds(_fov.timeBetweenShoots);
+        _canShoot = true;
+    }
+ 
     private void LookPlayer()
     {
         Quaternion targetRotation = Quaternion.LookRotation(_target.transform.position - (transform.position + _offsetSightTurret));
@@ -65,7 +75,7 @@ public class Turret : EnemyBase
     {
        GameObject bullet = Instantiate(_laserBullet, _firePoint.transform.position,transform.rotation);
        LaserBullet laser = bullet.GetComponentInChildren<LaserBullet>();
-       laser.DirectionToShoot( (_target.transform.position - (transform.position + _offsetSightTurret)).normalized);        
+       laser.DirectionToShoot( (_target.transform.position - (transform.position + _offsetSightTurret)).normalized);       
     }
 
     private void ChargeWeapon()

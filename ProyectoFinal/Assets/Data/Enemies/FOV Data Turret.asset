@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _viewDistance: 15
   _viewAngle: 360
-  _shootDistance: 7
+  _shootDistance: 10
+  _timeBetweenShoots: 1
   _speedToRotation: 20

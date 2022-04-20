@@ -47,7 +47,7 @@ public class InputController : MonoBehaviour
 
     private void Hud()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H) || (!GameManager.instance.playerIsAlive))
         {
             onPressKeyHudEvent?.Invoke();
         }

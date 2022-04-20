@@ -22,6 +22,7 @@ public class Enemy : EnemyBase
     private NavMeshAgent _navigation;
     private int _index = 0;
     private Animator _enemyAnimator;
+    private bool _canShoot = true;
 
     private void Awake()
     {
@@ -75,12 +76,18 @@ public class Enemy : EnemyBase
                 _navigation.isStopped = true;
                 if (_enemyAnimator != null) _enemyAnimator.SetBool("isWalk", false);
                 LookPlayer();
-                if (IsInShootingRange(_target))
+                if (IsInShootingRange(_target)&&(_canShoot))
                 {
+                    _canShoot = false;
                     Shoot();
                 }
             }
         }
+    }
+    IEnumerator TimeToNextShoot()
+    {
+        yield return new WaitForSeconds(_fov.timeBetweenShoots);
+        _canShoot = true;
     }
 
     private void Shoot()
